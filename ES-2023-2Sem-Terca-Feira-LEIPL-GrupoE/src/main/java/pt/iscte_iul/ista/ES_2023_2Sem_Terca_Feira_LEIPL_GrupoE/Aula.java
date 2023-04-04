@@ -1,5 +1,11 @@
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
+/**
+ * Gera um objeto Aula
+ * Contém métodos getters e setters para todos os parâmetros
+ * 
+ * */
+
 public class Aula {
     private String nome;
     private String curso;
