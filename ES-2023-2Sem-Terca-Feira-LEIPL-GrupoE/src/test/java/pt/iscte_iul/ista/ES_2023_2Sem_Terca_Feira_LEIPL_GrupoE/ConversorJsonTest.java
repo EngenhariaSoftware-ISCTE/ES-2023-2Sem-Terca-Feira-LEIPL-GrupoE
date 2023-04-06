@@ -1,7 +1,6 @@
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import junit.framework.TestCase;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -9,9 +8,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ConversorJsonTest {
+public class ConversorJsonTest extends TestCase {
 
-    @Test
     public void testGravarEmArquivoJson() throws IOException {
         List<Aula> aulas = new ArrayList<>();
         Aula aula1 = new Aula("ME", "Teoria dos Jogos e dos Contratos", "01789TP01", "MEA1", 30, "Sex", "13:00:00", "14:30:00", "02/12/2022", "AA2.25", 34);
@@ -27,7 +25,6 @@ public class ConversorJsonTest {
         Files.deleteIfExists(Paths.get(filePath));
     }
 
-    @Test
     public void testCarregarDeArquivoJson() throws IOException {
         List<Aula> aulas = new ArrayList<>();
         Aula aula1 = new Aula("ME", "Teoria dos Jogos e dos Contratos", "01789TP01", "MEA1", 30, "Sex", "13:00:00", "14:30:00", "02/12/2022", "AA2.25", 34);
