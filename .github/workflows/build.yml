@@ -1,8 +1,8 @@
-name: SonarCloud
 on:
   push:
     branches:
       - master
+      - branch-*    # The other branches to be analyzed
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
