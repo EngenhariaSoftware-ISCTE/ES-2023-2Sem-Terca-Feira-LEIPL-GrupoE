@@ -16,117 +16,115 @@ import java.util.List;
  * 	
  * */
 public class Horario {
-    private List<Aula> aulas;
+    private List<Aula> horario;
 
     public Horario() {
-        this.aulas = new ArrayList<>();
+        this.horario = new ArrayList<>();
     }
 
     // Adiciona uma aula ao horário
     public void adicionaAula(Aula aula) {
-        this.aulas.add(aula);
+        this.horario.add(aula);
     }
 
     // Remove uma aula do horário
     public void removeAula(Aula aula) {
-        this.aulas.remove(aula);
+        this.horario.remove(aula);
     }
 
-    // Ordena as aulas por nome
-    public void ordenaPorNome() {
-        Collections.sort(this.aulas, Comparator.comparing(Aula::getNome));
+    // Ordena aulas por uc
+    public void ordenaPorUC() {
+        Collections.sort(this.horario, Comparator.comparing(Aula::getUC));
     }
 
-    // Ordena as aulas por curso
+    // Ordena aulas por curso
     public void ordenaPorCurso() {
-        Collections.sort(this.aulas, Comparator.comparing(Aula::getCurso));
+        Collections.sort(this.horario, Comparator.comparing(Aula::getCurso));
     }
 
-    // Ordena as aulas por turno
+    // Ordena aulas por turno
     public void ordenaPorTurno() {
-        Collections.sort(this.aulas, Comparator.comparing(Aula::getTurno));
+        Collections.sort(this.horario, Comparator.comparing(Aula::getTurno));
     }
 
-    // Ordena as aulas por turma
+    // Ordena aulas por turma
     public void ordenaPorTurma() {
-        Collections.sort(this.aulas, Comparator.comparing(Aula::getTurma));
+        Collections.sort(this.horario, Comparator.comparing(Aula::getTurma));
     }
 
-    // Ordena as aulas por número de inscritos
+    // Ordena aulas por número de inscritos
     public void ordenaPorInscritos() {
-        Collections.sort(this.aulas, Comparator.comparing(Aula::getInscritos));
+        Collections.sort(this.horario, Comparator.comparing(Aula::getInscritos));
     }
 
-    // Ordena as aulas por dia
+    // Ordena aulas por dia
     public void ordenaPorDia() {
-        Collections.sort(this.aulas, Comparator.comparing(Aula::getDia));
+        Collections.sort(this.horario, Comparator.comparing(Aula::getDia));
     }
 
-    // Ordena as aulas por hora de início
+    // Ordena aulas por hora de início
     public void ordenaPorHoraInicio() {
-        Collections.sort(this.aulas, Comparator.comparing(Aula::getHora_inicio));
+        Collections.sort(this.horario, Comparator.comparing(Aula::getHoraInicio));
     }
 
-    // Ordena as aulas por hora de fim
+    // Ordena aulas por hora de fim
     public void ordenaPorHoraFim() {
-        Collections.sort(this.aulas, Comparator.comparing(Aula::getHora_fim));
+        Collections.sort(this.horario, Comparator.comparing(Aula::getHoraFim));
     }
 
-    // Ordena as aulas por data
+    // Ordena aulas por data
     public void ordenaPorData() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        Collections.sort(this.aulas, Comparator.comparing(aula -> LocalDate.parse(aula.getData(), formatter)));
+    	Collections.sort(this.horario, Comparator.comparing(Aula::getData));
     }
 
-    // Ordena as aulas por sala
+    // Ordena aulas por sala
     public void ordenaPorSala() {
-        Collections.sort(this.aulas, Comparator.comparing(Aula::getSala));
+        Collections.sort(this.horario, Comparator.comparing(Aula::getSala));
     }
 
-    // Ordena as aulas por lotação
+    // Ordena aulas por lotação
     public void ordenaPorLotacao() {
-        Collections.sort(this.aulas, Comparator.comparing(Aula::getLotacao));
+        Collections.sort(this.horario, Comparator.comparing(Aula::getLotacao));
     }
 
-    // Filtra as aulas por dia
-    public List<Aula> filtraPorDia(String dia) {
-        List<Aula> aulasDia = new ArrayList<>();
-        for (Aula aula : this.aulas) {
-            if (aula.getDia().equals(dia)) {
-                aulasDia.add(aula);
+ // Filtra as aulas por um dia específico
+    public List<Aula> filtraPorDia(LocalDate dia) {
+        List<Aula> aulasDoDia = new ArrayList<>();
+        for (Aula aula : this.horario) {
+            if (aula.getData().equals(dia)) {
+                aulasDoDia.add(aula);
             }
         }
-        return aulasDia;
+        return aulasDoDia;
     }
 
-    // Filtra as aulas por semana
-    public List<Aula> filtraPorSemana(int semana) {
-        List<Aula> aulasSemana = new ArrayList<>();
-        for (Aula aula : this.aulas) {
-            int semanaAula = Integer.parseInt(aula.getDia().substring(7));
-            if (semanaAula == semana) {
-                aulasSemana.add(aula);
+    // Filtra as aulas por uma semana específica
+    public List<Aula> filtraPorSemana(LocalDate inicioSemana, LocalDate fimSemana) {
+        List<Aula> aulasDaSemana = new ArrayList<>();
+        for (Aula aula : this.horario) {
+            if (aula.getData().isAfter(inicioSemana.minusDays(1)) && aula.getData().isBefore(fimSemana.plusDays(1))) {
+                aulasDaSemana.add(aula);
             }
         }
-        return aulasSemana;
+        return aulasDaSemana;
     }
-
-    // Filtra as aulas por mês
+    
+    // Filtra as aulas por um mês específico
     public List<Aula> filtraPorMes(int mes) {
-        List<Aula> aulasMes = new ArrayList<>();
-        for (Aula aula : this.aulas) {
-            int mesAula = Integer.parseInt(aula.getData().substring(3, 5));
-            if (mesAula == mes) {
-                aulasMes.add(aula);
+        List<Aula> aulasDoMes = new ArrayList<>();
+        for (Aula aula : this.horario) {
+            if (aula.getData().getMonthValue() == mes) {
+                aulasDoMes.add(aula);
             }
         }
-        return aulasMes;
+        return aulasDoMes;
     }
-
+   
     // Retorna todas as aulas do horário
     public List<Aula> getAulas() {
-        return this.aulas;
+        return this.horario;
     }
+
 }
 
 
