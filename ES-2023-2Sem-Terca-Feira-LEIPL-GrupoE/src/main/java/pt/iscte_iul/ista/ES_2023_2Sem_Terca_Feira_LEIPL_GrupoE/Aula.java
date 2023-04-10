@@ -16,22 +16,22 @@ public class Aula {
     private String turma;
     private int inscritos;
     private String dia; 
-    private LocalTime hora_inicio;
-    private LocalTime hora_fim;
+    private LocalTime horaInicio;
+    private LocalTime horaFim;
     private LocalDate data;
     private String sala;
     private int lotacao;
 
     // Construtor da classe Aula
-    public Aula(String curso, String uc, String turno, String turma, int inscritos, String dia, LocalTime hora_inicio, LocalTime hora_fim, LocalDate data, String sala, int lotacao) {
+    public Aula(String curso, String uc, String turno, String turma, int inscritos, String dia, LocalTime horaInicio, LocalTime horaFim, LocalDate data, String sala, int lotacao) {
         this.uc = uc;
         this.curso = curso;
         this.turno = turno;
         this.turma = turma;
         this.inscritos = inscritos;
         this.dia = dia;
-        this.hora_inicio = hora_inicio;
-        this.hora_fim = hora_fim;
+        this.horaInicio = horaInicio;
+        this.horaFim = horaFim;
         this.data = data;
         this.sala = sala;
         this.lotacao = lotacao;
@@ -88,19 +88,19 @@ public class Aula {
     }
 
     public LocalTime getHoraInicio() {
-        return hora_inicio;
+        return horaInicio;
     }
 
     public void setHoraInicio(LocalTime hora_inicio) {
-        this.hora_inicio = hora_inicio;
+        this.horaInicio = hora_inicio;
     }
 
     public LocalTime getHoraFim() {
-        return hora_fim;
+        return horaFim;
     }
 
     public void setHoraFim(LocalTime hora_fim) {
-        this.hora_fim = hora_fim;
+        this.horaFim = hora_fim;
     }
 
     public LocalDate getData() {

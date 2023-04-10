@@ -69,12 +69,7 @@ class HorarioTest {
 	}
 	
 	 
-	/**
-	 * Test method for {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Horario#Horario()}.
-	 */
-	@Test
-	void testHorario() {
-	}
+	
 
 	/**
 	 * Test method for {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Horario#adicionaAula(pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula)}.
