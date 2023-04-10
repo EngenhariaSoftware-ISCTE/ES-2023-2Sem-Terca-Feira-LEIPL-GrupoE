@@ -1,5 +1,8 @@
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 /**
  * Gera um objeto Aula
  * Contém métodos getters e setters para todos os parâmetros
@@ -7,21 +10,21 @@ package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
  * */
 
 public class Aula {
-    private String nome;
+    private String uc;
     private String curso;
     private String turno;
     private String turma;
     private int inscritos;
-    private String dia;
-    private String hora_inicio;
-    private String hora_fim;
-    private String data;
+    private String dia; 
+    private LocalTime hora_inicio;
+    private LocalTime hora_fim;
+    private LocalDate data;
     private String sala;
     private int lotacao;
 
     // Construtor da classe Aula
-    public Aula(String nome, String curso, String turno, String turma, int inscritos, String dia, String hora_inicio, String hora_fim, String data, String sala, int lotacao) {
-        this.nome = nome;
+    public Aula(String curso, String uc, String turno, String turma, int inscritos, String dia, LocalTime hora_inicio, LocalTime hora_fim, LocalDate data, String sala, int lotacao) {
+        this.uc = uc;
         this.curso = curso;
         this.turno = turno;
         this.turma = turma;
@@ -35,20 +38,21 @@ public class Aula {
     }
 
     // Getters e Setters para os atributos
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
+    
     public String getCurso() {
         return curso;
     }
 
     public void setCurso(String curso) {
         this.curso = curso;
+    }
+
+    public String getUC() {
+        return uc;
+    }
+
+    public void setUC(String uc) {
+        this.uc = uc;
     }
 
     public String getTurno() {
@@ -83,27 +87,27 @@ public class Aula {
         this.dia = dia;
     }
 
-    public String getHora_inicio() {
+    public LocalTime getHoraInicio() {
         return hora_inicio;
     }
 
-    public void setHora_inicio(String hora_inicio) {
+    public void setHoraInicio(LocalTime hora_inicio) {
         this.hora_inicio = hora_inicio;
     }
 
-    public String getHora_fim() {
+    public LocalTime getHoraFim() {
         return hora_fim;
     }
 
-    public void setHora_fim(String hora_fim) {
+    public void setHoraFim(LocalTime hora_fim) {
         this.hora_fim = hora_fim;
     }
 
-    public String getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
