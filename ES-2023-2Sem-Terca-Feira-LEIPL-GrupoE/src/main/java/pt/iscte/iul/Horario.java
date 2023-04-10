@@ -1,4 +1,4 @@
-package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
+package pt.iscte.iul;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -75,7 +75,7 @@ public class Horario {
     // Ordena as aulas por data
     public void ordenaPorData() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        Collections.sort(this.aulas, Comparator.comparing(aula -> LocalDate.parse(aula.getData(), formatter)));
+     //   Collections.sort(this.aulas, Comparator.comparing(aula -> LocalDate.parse(aula.getData(), formatter)));
     }
 
     // Ordena as aulas por sala
@@ -115,10 +115,10 @@ public class Horario {
     public List<Aula> filtraPorMes(int mes) {
         List<Aula> aulasMes = new ArrayList<>();
         for (Aula aula : this.aulas) {
-            int mesAula = Integer.parseInt(aula.getData().substring(3, 5));
+          /*  int mesAula = Integer.parseInt(aula.getData().substring(3, 5));
             if (mesAula == mes) {
                 aulasMes.add(aula);
-            }
+            }*/
         }
         return aulasMes;
     }

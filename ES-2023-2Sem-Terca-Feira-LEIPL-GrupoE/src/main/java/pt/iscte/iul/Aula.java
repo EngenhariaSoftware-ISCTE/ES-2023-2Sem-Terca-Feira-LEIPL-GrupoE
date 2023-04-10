@@ -1,4 +1,6 @@
-package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
+package pt.iscte.iul;
+
+import java.util.Date;
 
 /**
  * Gera um objeto Aula
@@ -15,12 +17,12 @@ public class Aula {
     private String dia;
     private String hora_inicio;
     private String hora_fim;
-    private String data;
+    private Date data;
     private String sala;
     private int lotacao;
 
     // Construtor da classe Aula
-    public Aula(String nome, String curso, String turno, String turma, int inscritos, String dia, String hora_inicio, String hora_fim, String data, String sala, int lotacao) {
+    public Aula(String nome, String curso, String turno, String turma, int inscritos, String dia, String hora_inicio, String hora_fim, Date data, String sala, int lotacao) {
         this.nome = nome;
         this.curso = curso;
         this.turno = turno;
@@ -99,11 +101,11 @@ public class Aula {
         this.hora_fim = hora_fim;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
