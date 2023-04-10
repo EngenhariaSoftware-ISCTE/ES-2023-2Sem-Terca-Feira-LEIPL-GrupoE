@@ -1,7 +1,6 @@
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+
 
 /**
  *Classe main do projeto
@@ -9,9 +8,12 @@ import java.time.LocalTime;
  */
 public class App 
 {
+	
     public static void main( String[] args )
     {
-    		
+    	/**
+    	 * para usar depois
+    	 */	
 
     	
     }

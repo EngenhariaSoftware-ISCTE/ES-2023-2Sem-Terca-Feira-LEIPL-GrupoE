@@ -155,7 +155,7 @@ class AulaTest {
 		 * Test method for {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getDia()}.
 		 */
 	    @Test
-	    public void testGetDia() {
+	    void testGetDia() {
 	        assertEquals("Segunda", aula.getDia());
 	    }
 
@@ -173,7 +173,7 @@ class AulaTest {
 		 * Test method for {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getHoraInicio()}.
 		 */
 	    @Test
-	    public void testGetHoraInicio() {
+	    void testGetHoraInicio() {
 	        assertEquals(timeStart, aula.getHoraInicio());
 	    }
 
@@ -202,7 +202,7 @@ class AulaTest {
 		 * Test method for {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getHoraFim()}.
 		 */
 	    @Test
-	    public void testGetHoraFim() {
+	    void testGetHoraFim() {
 	        assertEquals(nTimeEnd, aula.getHoraFim());
 	    }
 
