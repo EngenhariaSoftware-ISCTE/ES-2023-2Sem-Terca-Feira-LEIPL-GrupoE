@@ -11,6 +11,12 @@ import java.text.ParseException;
 import com.calendarfx.model.CalendarSource;
 import com.calendarfx.view.*;
 
+
+/**
+ *Classe main do projeto
+ *
+ */
+
 public class App extends Application {
 
     @Override
