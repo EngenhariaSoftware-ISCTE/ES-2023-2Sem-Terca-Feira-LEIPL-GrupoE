@@ -4,8 +4,7 @@
  */
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.FileReader;
@@ -14,12 +13,18 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 
 public class ConversorJson {
 
-    private static final Gson gson = new GsonBuilder().setDateFormat("dd/MM/yyyy").setPrettyPrinting().create();
+    private static final Gson gson = new GsonBuilder()
+            .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+            .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter())
+            .setPrettyPrinting()
+            .create();
 
     /**
      * Método para gravar uma lista de objetos Aula em um arquivo JSON.
@@ -48,4 +53,6 @@ public class ConversorJson {
             return gson.fromJson(reader, listType);
         }
     }
+
+
 }
