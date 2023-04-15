@@ -17,6 +17,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <sonar.projectKey>EngenhariaSoftware-ISCTE_ES-2023-2Sem-Terca-Feira-LEIPL-GrupoE</sonar.projectKey>
     <sonar.organization>engenhariasoftware-iscte</sonar.organization>
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
@@ -27,6 +28,11 @@
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.9.2</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
     </dependency>
   </dependencies>
 
@@ -72,6 +78,16 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 
   <reporting>
