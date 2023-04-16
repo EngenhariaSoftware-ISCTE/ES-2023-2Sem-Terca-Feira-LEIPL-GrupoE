@@ -7,22 +7,24 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.FileWriter;
 import com.opencsv.CSVWriter;
-import java.text.SimpleDateFormat;
-
 import com.opencsv.CSVReader;
-//import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
 
-public class ConversorCSV {
-	
 /**
- * 	//Método para ler ficheiro CVS e colocar na estrutura Horário
+ * 
+ * @author Vítor Hugo Ferreira Teixeira
+ *Classe Conversor CSV - Lê um ficheiro CSV para um objeto Horário e escreve para um ficheiro CSV a partir de um objeto Horário
+ */
+
+
+public class ConversorCSV {
+		
+/**
+ * Método para ler ficheiro CVS e colocar na estrutura/objeto Horário
  * @param locationCSVFile
  * @return
  * @throws CsvException
@@ -33,22 +35,22 @@ public class ConversorCSV {
 			List<String[]> r = reader.readAll();
 			
 			Horario h = new Horario();
-			
-			System.out.println("Comecei a ler o ficheiro");
 
 			for(int i = 1; i < r.size(); i++) {
 				
 				Aula a = new Aula();
 				
-				if(r.get(i)[10] == "") {
+				if(r.get(i)[10] == "") 
 					a.setLotacao(0);
-				}
-				else {
+					
+				else 
 					a.setLotacao(Integer.parseInt(r.get(i)[10]));
-				}
 				
-				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 				String data = r.get(i)[8];
+				if(data == "") {
+					data = "25/12/2023";
+				}
 				LocalDate localDate = LocalDate.parse(data, formatter);
 				
 				a.setCurso(r.get(i)[0]);
@@ -57,8 +59,8 @@ public class ConversorCSV {
 				a.setTurma(r.get(i)[3]);
 				a.setInscritos(Integer.parseInt(r.get(i)[4]));
 				a.setDia(r.get(i)[5]);
-				a.setHora_inicio(LocalTime.parse(r.get(i)[6]));
-				a.setHora_fim(LocalTime.parse(r.get(i)[7]));
+				a.setHoraInicio(LocalTime.parse(r.get(i)[6]));
+				a.setHoraFim(LocalTime.parse(r.get(i)[7]));
 				a.setData(localDate);
 				a.setSala(r.get(i)[9]);
 				h.adicionaAula(a);
@@ -79,7 +81,7 @@ public class ConversorCSV {
 	}
 	
 /**
- * 	//Método para escrever ficheiro CSV
+ * Método para escrever a partir de uma estrutura/objeto Horário para um ficheiro CSV
  * @param h
  * @param fileName
  */
@@ -94,10 +96,6 @@ public class ConversorCSV {
 		for(int i = 0; i < h.getAulas().size(); i++) {
 			
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	        //String date = "16/08/2016";
-	        //LocalDate localDate = LocalDate.parse(date, formatter);
-	        //h.getAulas().get(i).getData().toString()
-	        
 			String lotacao = "";
 			if(h.getAulas().get(i).getLotacao() != 0 )
 				 lotacao = Integer.toString(h.getAulas().get(i).getLotacao());
@@ -105,7 +103,7 @@ public class ConversorCSV {
 			String[] a = {h.getAulas().get(i).getCurso(),h.getAulas().get(i).getUC(),
 					h.getAulas().get(i).getTurno(),h.getAulas().get(i).getTurma(),
 					Integer.toString(h.getAulas().get(i).getInscritos()),h.getAulas().get(i).getDia(),
-					h.getAulas().get(i).getHora_inicio().toString().concat(":00"),h.getAulas().get(i).getHora_fim().toString().concat(":00"),
+					h.getAulas().get(i).getHoraFim().toString().concat(":00"),h.getAulas().get(i).getHoraFim().toString().concat(":00"),
 					formatter.format(h.getAulas().get(i).getData()),h.getAulas().get(i).getSala(),
 					lotacao};
 			

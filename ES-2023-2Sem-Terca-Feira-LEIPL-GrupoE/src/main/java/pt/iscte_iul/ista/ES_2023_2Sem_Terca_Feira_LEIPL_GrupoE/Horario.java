@@ -17,7 +17,8 @@ import java.util.List;
  * */
 
 public class Horario {
-    private List<Aula> horario;
+
+	private List<Aula> horario;
 
     public Horario() {
         this.horario = new ArrayList<>();
@@ -127,6 +128,13 @@ public class Horario {
     public List<Aula> getAulas() {
         return this.horario;
     }
+    
+/**
+ *     @Override
+ */
+	public String toString() {
+		return "Horario [horario=" + horario + "]";
+	}
 
 }
 

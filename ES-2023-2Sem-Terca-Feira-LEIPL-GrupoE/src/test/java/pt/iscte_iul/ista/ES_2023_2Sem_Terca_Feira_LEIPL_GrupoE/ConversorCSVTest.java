@@ -6,12 +6,18 @@ import org.junit.jupiter.api.Test;
 
 import com.opencsv.exceptions.CsvException;
 
+/**
+ * 
+ * @author Vítor Hugo Ferreira Teixeira
+ *
+ */
+
 class ConversorCSVTest {
 
-	@Test
+	/*@Test
 	void test() {
 		fail("Not yet implemented");
-	}
+	}*/
 	
 	@Test
 	public void testCSV() throws CsvException {
@@ -19,9 +25,13 @@ class ConversorCSVTest {
 		Horario h = ConversorCSV.lerCSVParaEstrutura("C:\\Users\\vitor\\Documents\\Licenciatura em Engenharia Informatica ISCTE\\2022-2023\\ES\\Projeto\\OLD\\horario-exemplo.csv");
 		ConversorCSV.escreveCSV(h, "C:\\Users\\vitor\\Documents\\Licenciatura em Engenharia Informatica ISCTE\\2022-2023\\ES\\Projeto\\OLD\\horario-teste.csv");
 		Horario h1 = ConversorCSV.lerCSVParaEstrutura("C:\\Users\\vitor\\Documents\\Licenciatura em Engenharia Informatica ISCTE\\2022-2023\\ES\\Projeto\\OLD\\horario-teste.csv");
-		//ConversorCSV.escreveCSV(h1, "C:\\Users\\vitor\\Documents\\Licenciatura em Engenharia Informatica ISCTE\\2022-2023\\ES\\Projeto\\OLD\\horario-teste2.csv");
-		//Horario h2 = ConversorCSV.lerCSVParaEstrutura("C:\\Users\\vitor\\Documents\\Licenciatura em Engenharia Informatica ISCTE\\2022-2023\\ES\\Projeto\\OLD\\horario-teste2.csv");
-		assertEquals(h.getAulas().get(0).getCurso(),h1.getAulas().get(0).getCurso());
+		
+		assertEquals(h.getAulas().get(123).getCurso(),h1.getAulas().get(123).getCurso());
 	}
 
+	/*@Test
+	public void testLocalizacaoFicheiro() throws CsvException {
+		assertNull(ConversorCSV.lerCSVParaEstrutura("C:\\Users\\vitor\\Documents\\Licenciatura em Engenharia Informatica ISCTE\\2022-2023\\ES\\Projeto\\OLD\\horario-nulo.csv"));
+	}*/
+		
 }
