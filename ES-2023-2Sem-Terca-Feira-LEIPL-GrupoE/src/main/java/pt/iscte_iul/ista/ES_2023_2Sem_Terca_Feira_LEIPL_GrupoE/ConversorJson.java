@@ -17,26 +17,22 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-
 public class ConversorJson {
 
-    private static final Gson gson = new GsonBuilder()
-            .registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
-            .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter())
-            .setPrettyPrinting()
-            .create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+	    .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).setPrettyPrinting().create();
 
     /**
      * Método para gravar uma lista de objetos Aula em um arquivo JSON.
      *
-     * @param aulas     Lista de objetos Aula a serem gravados no arquivo.
-     * @param filePath  Caminho do arquivo JSON onde os dados serão gravados.
+     * @param aulas    Lista de objetos Aula a serem gravados no arquivo.
+     * @param filePath Caminho do arquivo JSON onde os dados serão gravados.
      * @throws IOException Se ocorrer um erro durante a gravação do arquivo.
      */
     public static void gravarEmArquivoJSON(List<Aula> aulas, String filePath) throws IOException {
-        try (Writer writer = new FileWriter(filePath)) {
-            gson.toJson(aulas, writer);
-        }
+	try (Writer writer = new FileWriter(filePath)) {
+	    gson.toJson(aulas, writer);
+	}
     }
 
     /**
@@ -47,12 +43,10 @@ public class ConversorJson {
      * @throws IOException Se ocorrer um erro durante a leitura do arquivo.
      */
     public static List<Aula> carregarDeArquivoJSON(String filePath) throws IOException {
-        try (Reader reader = new FileReader(filePath)) {
-            Type listType = new TypeToken<List<Aula>>() {
-            }.getType();
-            return gson.fromJson(reader, listType);
-        }
+	try (Reader reader = new FileReader(filePath)) {
+	    Type listType = new TypeToken<List<Aula>>() {
+	    }.getType();
+	    return gson.fromJson(reader, listType);
+	}
     }
-
-
 }

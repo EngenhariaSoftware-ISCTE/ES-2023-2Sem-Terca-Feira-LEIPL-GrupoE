@@ -127,6 +127,5 @@ public class Horario {
     public List<Aula> getAulas() {
         return this.horario;
     }
-
 }
 

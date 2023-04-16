@@ -13,6 +13,7 @@ import java.text.ParseException;
 import com.calendarfx.view.CalendarView;
 
 /**
+ * @autor Tatiana Clim
  * Classe principal do projeto que inicializa a interface gráfica do usuário.
  */
 public class App extends Application {

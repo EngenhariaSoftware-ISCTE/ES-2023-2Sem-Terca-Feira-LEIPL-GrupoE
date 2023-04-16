@@ -4,6 +4,7 @@ import com.calendarfx.model.Calendar;
 import com.calendarfx.model.Entry;
 
 /**
+ *  @autor Tatiana Clim
  * Classe responsável por representar um calendário de aulas. Utiliza a
  * biblioteca CalendarFX para criar e gerenciar as entradas do calendário.
  */
@@ -33,6 +34,8 @@ public class Calendario {
 	for (Aula aula : horario.getAulas()) {
 	    Entry<Aula> entry = new Entry<>(aula.getUC());
 	    entry.setUserObject(aula);
+	    entry.changeStartDate(aula.getData());
+	    entry.changeEndDate(aula.getData());
 	    entry.setInterval(aula.getHoraInicio(), aula.getHoraFim());
 	    calendario.addEntry(entry);
 	}
