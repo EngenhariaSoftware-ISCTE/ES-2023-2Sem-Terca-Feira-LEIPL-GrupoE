@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
+ *@autor Luis Viriato
  * Gera um horário que é uma lista de objetos Aula.
  * Possui métodos para adicionar e remover obj Aula.
  * Possui métodos para ordenar o Horário com base nos diversos argumentos da classe Aula
@@ -14,6 +15,7 @@ import java.util.List;
  * Possui ainda um getter do horário.
  * 	
  * */
+
 public class Horario {
     private List<Aula> horario;
 
@@ -21,6 +23,8 @@ public class Horario {
         this.horario = new ArrayList<>();
     }
 
+    
+    
     // Adiciona uma aula ao horário
     public void adicionaAula(Aula aula) {
         this.horario.add(aula);
