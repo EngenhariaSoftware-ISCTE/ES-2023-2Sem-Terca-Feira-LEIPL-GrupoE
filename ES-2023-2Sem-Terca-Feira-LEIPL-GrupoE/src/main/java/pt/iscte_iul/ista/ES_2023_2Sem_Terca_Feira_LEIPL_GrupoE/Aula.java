@@ -35,6 +35,14 @@ public class Aula {
     private String sala;
     private int lotacao;
     
+ /**
+  * Construtor vazio para possibilitar mais flexibilidade na criação de código
+  */
+    public Aula() {
+    	
+    }    
+    
+    
     /**
      * @param curso - curso a que pertence a uc
      * @param uc - Unidade curricular
@@ -48,7 +56,8 @@ public class Aula {
      * @param sala - Local da aula.
      * @param lotacao -Lotação da sala.
      */
-    public Aula(String curso, String uc, String turno, String turma, int inscritos, String dia, LocalTime horaInicio, LocalTime horaFim, LocalDate data, String sala, int lotacao) {
+    
+	public Aula(String curso, String uc, String turno, String turma, int inscritos, String dia, LocalTime horaInicio, LocalTime horaFim, LocalDate data, String sala, int lotacao) {
         this.uc = uc;
         this.curso = curso;
         this.turno = turno;
@@ -186,4 +195,13 @@ public class Aula {
     public void setLotacao(int lotacao) {
         this.lotacao = lotacao;
     }
+    
+/**
+ * @Override
+ */
+	public String toString() {
+		return "Aula [uc=" + uc + ", curso=" + curso + ", turno=" + turno + ", turma=" + turma + ", inscritos="
+				+ inscritos + ", dia=" + dia + ", horaInicio=" + horaInicio + ", horaFim=" + horaFim + ", data=" + data
+				+ ", sala=" + sala + ", lotacao=" + lotacao + "]";
+	}
 }
