@@ -40,7 +40,7 @@ public class ConversorCSV {
 				
 				Aula a = new Aula();
 				
-				if(r.get(i)[10] == "") 
+				if(r.get(i)[10].equals("")) 
 					a.setLotacao(0);
 					
 				else 
@@ -48,7 +48,7 @@ public class ConversorCSV {
 				
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 				String data = r.get(i)[8];
-				if(data == "") {
+				if(data.equals("")) {
 					data = "25/12/2023";
 				}
 				LocalDate localDate = LocalDate.parse(data, formatter);
@@ -72,10 +72,12 @@ public class ConversorCSV {
 	      
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+		    System.out.println(e.getMessage());
+			//e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+		    System.out.println(e.getMessage());
 		}
 		return null;
 	}
@@ -114,7 +116,8 @@ public class ConversorCSV {
             writer.writeAll(list);
         } catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+            System.out.println(e.getMessage());
 		}
 		
 	}
