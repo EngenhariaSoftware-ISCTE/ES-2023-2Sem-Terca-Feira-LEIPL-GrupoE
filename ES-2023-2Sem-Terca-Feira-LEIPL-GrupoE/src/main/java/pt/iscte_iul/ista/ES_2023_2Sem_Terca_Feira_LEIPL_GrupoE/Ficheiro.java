@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,7 +45,7 @@ public class Ficheiro {
     /**
      * Horario que será carregado ou exportado.
      */
-    private final Horario horario;
+    private Horario horario;
     /**
      * Stage utilizado para exibir o FileChooser.
      */
@@ -97,17 +98,26 @@ public class Ficheiro {
     private class LoadButtonHandler implements EventHandler<ActionEvent> {
 	@Override
 	public void handle(ActionEvent event) {
+	    List<Aula> aulas = new ArrayList<>();
+	   
 	    // Abre a janela de diálogo para o usuário escolher o arquivo
 	    File file = fileChooser.showOpenDialog(stage);
 	    if (file != null) {
 		try {
+		    if(!horario.getAulas().isEmpty()||interfaceHorario.getCalendar().getUserObject() != null) {
+			 interfaceHorario.getCalendar().clear();
+
+			 aulas = horario.getAulas();
+			 horario.getAulas().removeAll(aulas);
+			 aulas = null;
+		    }
+		   
 		    // Verifica a extensão do arquivo e chama a função conversora apropriada
 		    if (file.getName().endsWith("json")) {
-			List<Aula> aulas = ConversorJson.carregarDeArquivoJSON(file.getAbsolutePath());
-
+			aulas = ConversorJson.carregarDeArquivoJSON(file.getAbsolutePath());
 			aulas.forEach(aula -> horario.adicionaAula(aula));
-		    } else if (file.getName().endsWith(CSV_EXTENSION)) {
-			// conversorCSV(file);
+		    } else if (file.getName().endsWith("csv")) {
+			horario = ConversorCSV.lerCSVParaEstrutura(file.getAbsolutePath());
 		    } else {
 			System.out.println("Formato de arquivo inválido!");
 		    }
@@ -143,7 +153,7 @@ public class Ficheiro {
 		    if (file.getName().endsWith("json")) {
 			ConversorJson.gravarEmArquivoJSON(horario.getAulas(), file.getAbsolutePath());
 		    } else if (file.getName().endsWith("csv")) {
-			// conversorCSV(file);
+			ConversorCSV.escreveCSV(horario, file.getAbsolutePath());
 		    } else {
 			System.out.println("Formato de arquivo inválido!");
 		    }
