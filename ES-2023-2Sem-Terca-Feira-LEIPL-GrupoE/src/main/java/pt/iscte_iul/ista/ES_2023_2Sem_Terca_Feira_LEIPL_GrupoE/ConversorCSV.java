@@ -42,6 +42,7 @@ public class ConversorCSV {
 				
 				if(r.get(i)[10] == "") 
 					a.setLotacao(0);
+					
 				else 
 					a.setLotacao(Integer.parseInt(r.get(i)[10]));
 				
@@ -65,6 +66,7 @@ public class ConversorCSV {
 				h.adicionaAula(a);
 
 				System.out.println("iteração: " + i + " " + a);
+
 			}
 			return h;
 	      
@@ -86,7 +88,7 @@ public class ConversorCSV {
 	public static void escreveCSV(Horario h, String fileName) {
 		
 		String[] cabecalho = {"Curso", "Unidade Curricular", "Turno", "Turma", "Inscritos",
-				"Dia", "Hora Início", "Hora Fim", "Data", "Sala","Lotação"};
+				"Dia", "Hora Início", "Hora Fim", "Data", "Sala"};
 		
 		List<String[]> list = new ArrayList<>();
 		list.add(cabecalho);
@@ -101,7 +103,7 @@ public class ConversorCSV {
 			String[] a = {h.getAulas().get(i).getCurso(),h.getAulas().get(i).getUC(),
 					h.getAulas().get(i).getTurno(),h.getAulas().get(i).getTurma(),
 					Integer.toString(h.getAulas().get(i).getInscritos()),h.getAulas().get(i).getDia(),
-					h.getAulas().get(i).getHoraInicio().toString().concat(":00"),h.getAulas().get(i).getHoraFim().toString().concat(":00"),
+					h.getAulas().get(i).getHoraFim().toString().concat(":00"),h.getAulas().get(i).getHoraFim().toString().concat(":00"),
 					formatter.format(h.getAulas().get(i).getData()),h.getAulas().get(i).getSala(),
 					lotacao};
 			
