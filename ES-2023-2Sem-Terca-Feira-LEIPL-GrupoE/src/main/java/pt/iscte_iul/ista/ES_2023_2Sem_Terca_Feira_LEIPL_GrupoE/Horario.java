@@ -135,7 +135,5 @@ public class Horario {
 	public String toString() {
 		return "Horario [horario=" + horario + "]";
 	}
-
 }
-
 
