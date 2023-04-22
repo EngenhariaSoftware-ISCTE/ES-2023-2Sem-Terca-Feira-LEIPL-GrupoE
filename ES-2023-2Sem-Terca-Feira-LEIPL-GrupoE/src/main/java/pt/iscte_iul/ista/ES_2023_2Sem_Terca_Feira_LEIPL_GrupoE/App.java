@@ -33,7 +33,7 @@ public class App extends Application {
         // Cria um calendário
         Calendario interfaceHorario = new Calendario(horario);
         CalendarView calendarView = VistaCalendario.createCalendarView(interfaceHorario, primaryStage);
-   
+
         root.setCenter(calendarView);
 
         Scene scene = new Scene(root, 800, 600);

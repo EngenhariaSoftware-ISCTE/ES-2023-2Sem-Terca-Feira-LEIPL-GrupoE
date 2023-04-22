@@ -22,9 +22,9 @@ import java.util.List;
  */
 class HorarioTest {
 	
-    private static LocalTime timeStart1 = LocalTime.of(8, 0,0);
-    private static LocalTime timeStart2 = LocalTime.of(9, 0,0);
-    private static LocalTime timeStart3 = LocalTime.of(10, 0,0);
+	private static LocalTime timeStart1 = LocalTime.of(8, 0,0);
+	private static LocalTime timeStart2 = LocalTime.of(9, 0,0);
+	private static LocalTime timeStart3 = LocalTime.of(10, 0,0);
     private static LocalTime timeEnd1 = LocalTime.of(10, 0,0);
     private static LocalTime timeEnd2 = LocalTime.of(11, 0,0);
     private static LocalDate date1 = LocalDate.of(2023,04,03);

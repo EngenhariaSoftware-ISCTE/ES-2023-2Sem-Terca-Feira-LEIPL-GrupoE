@@ -23,6 +23,8 @@ public class Horario {
     public Horario() {
         this.horario = new ArrayList<>();
     }
+
+    
     
     // Adiciona uma aula ao horário
     public void adicionaAula(Aula aula) {
