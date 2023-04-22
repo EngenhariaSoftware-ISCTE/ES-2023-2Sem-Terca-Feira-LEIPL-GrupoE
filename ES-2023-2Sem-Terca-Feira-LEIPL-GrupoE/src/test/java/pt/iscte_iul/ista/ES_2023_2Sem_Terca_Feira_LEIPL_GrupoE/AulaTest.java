@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
  * @author LMV
  *
  */
-class AulaTest {
+public class AulaTest {
 	
 		
 		/**
