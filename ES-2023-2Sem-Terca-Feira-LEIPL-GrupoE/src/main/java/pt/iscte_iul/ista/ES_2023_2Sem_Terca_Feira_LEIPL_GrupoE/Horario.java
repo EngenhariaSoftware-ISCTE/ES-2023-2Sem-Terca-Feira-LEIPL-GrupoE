@@ -135,5 +135,19 @@ public class Horario {
 	public String toString() {
 		return "Horario [horario=" + horario + "]";
 	}
+	
+	/**
+     * @return   lista com as UCs do horário.
+     * feature 4.1 do projeto
+     */
+	 public List<String> listaUCs() {
+    List<String> ucs = new ArrayList<>();
+    for (Aula aula : this.getAulas()) {
+        if (!ucs.contains(aula.getUC())) {
+            ucs.add(aula.getUC());
+        }
+    }
+    return ucs;
+}
 }
 

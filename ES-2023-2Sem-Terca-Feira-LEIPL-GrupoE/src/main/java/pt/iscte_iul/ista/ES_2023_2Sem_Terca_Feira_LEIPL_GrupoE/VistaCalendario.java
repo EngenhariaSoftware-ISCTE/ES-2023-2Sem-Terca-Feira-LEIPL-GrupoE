@@ -43,8 +43,14 @@ public class VistaCalendario {
 	// Obtém as referências aos botões
 	Button loadButton = ficheiro.getLoadButton();
 	Button exportButton = ficheiro.getExportButton();
-
-	ToolBar customToolbar = new ToolBar(loadButton, exportButton);
+	
+	//Novo botão para criar novo horário criado pelo(a) aluno(a)
+	Button criarNovoHorario = new Button("Criar Horário");
+	criarNovoHorario.setOnAction(event -> {
+		InterfaceCriarNovoHorario.mostrarInterface(horario);
+	});
+	
+	ToolBar customToolbar = new ToolBar(loadButton, exportButton, criarNovoHorario);
 
 	// Adiciona a barra de ferramentas personalizada ao cabeçalho do CalendarView
 	calendarView.setHeader(customToolbar);
