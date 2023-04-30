@@ -1,9 +1,12 @@
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -13,6 +16,7 @@ import java.util.List;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
+
 
 /**
  * 
@@ -31,7 +35,7 @@ public class ConversorCSV {
      * @throws CsvException
      */
     public static Horario lerCSVParaEstrutura(String locationCSVFile) throws CsvException {
-	try (CSVReader reader = new CSVReader(new FileReader(locationCSVFile))) {
+	try (CSVReader reader = new CSVReader(new InputStreamReader(new FileInputStream(locationCSVFile), StandardCharsets.UTF_8))) {
 
 	    List<String[]> r = reader.readAll();
 

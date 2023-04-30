@@ -201,4 +201,9 @@ public class Aula {
 		+ inscritos + ", dia=" + dia + ", horaInicio=" + horaInicio + ", horaFim=" + horaFim + ", data=" + data
 		+ ", sala=" + sala + ", lotacao=" + lotacao + "]";
     }
+    
+    public String displayEntry() {
+   	return  uc + ",\n Curso=" + curso + ",\n Turno=" + turno + ",\n Turma=" + turma + ",\n Inscritos="
+   		+ inscritos + ",\n Sala=" + sala + ",\n Lotacao=" + lotacao;
+       }
 }

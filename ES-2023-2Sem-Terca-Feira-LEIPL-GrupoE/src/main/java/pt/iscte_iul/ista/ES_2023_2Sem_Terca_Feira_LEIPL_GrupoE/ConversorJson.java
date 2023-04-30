@@ -4,12 +4,15 @@
  */
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -44,12 +47,12 @@ public class ConversorJson {
      * @throws IOException Se ocorrer um erro durante a leitura do arquivo.
      */
     public static List<Aula> carregarDeArquivoJSON(String filePath) throws IOException {
-	try (Reader reader = new FileReader(filePath)) {
-	    Type listType = new TypeToken<List<Aula>>() {
-	    }.getType();
-	    List<Aula> aulas = gson.fromJson(reader, listType);
-	    reader.close();
-	    return aulas;
+	    try (InputStream inputStream = new FileInputStream(filePath);
+	         Reader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
+	        Type listType = new TypeToken<List<Aula>>() {}.getType();
+	        List<Aula> aulas = gson.fromJson(reader, listType);
+	        return aulas;
+	    }
 	}
-    }
+
 }

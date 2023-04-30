@@ -106,12 +106,11 @@ public class Ficheiro {
 
 	    // Abre a janela de diálogo para o usuário escolher o arquivo
 	    File file = fileChooser.showOpenDialog(stage);
+	    Calendario.getCalendar().clear();
 	    if (file != null) {
 		try {
 
-		    if (!horario.getAulas().isEmpty() || interfaceHorario.getCalendar().getUserObject() != null) {
-			interfaceHorario.getCalendar().clear();
-
+		    if (!horario.getAulas().isEmpty() || Calendario.getCalendar().getUserObject() != null) {
 			aulas = horario.getAulas();
 			horario.getAulas().removeAll(aulas);
 			aulas = null;
@@ -127,7 +126,8 @@ public class Ficheiro {
 			System.out.println("Formato de arquivo inválido!");
 		    }
 
-		    interfaceHorario.addHorarioAoCalendario(horario);
+		    Calendario.addHorarioAoCalendario(horario);
+		    // interfaceHorario.addHorarioAoCalendario(horario);
 		    stage.close();
 
 		} catch (Exception e) {

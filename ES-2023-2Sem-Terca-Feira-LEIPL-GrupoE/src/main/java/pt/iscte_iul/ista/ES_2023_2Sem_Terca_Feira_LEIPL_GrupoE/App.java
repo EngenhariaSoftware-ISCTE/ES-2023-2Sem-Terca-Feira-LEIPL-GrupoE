@@ -31,12 +31,10 @@ public class App extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws ParseException, IOException, CsvException {
-	Horario horario = new Horario();
 	BorderPane root = new BorderPane();
 
 	// Cria um calendário
-	Calendario interfaceHorario = new Calendario(horario);
-	CalendarView calendarView = VistaCalendario.createCalendarView(interfaceHorario, primaryStage);
+	CalendarView calendarView = VistaCalendario.createCalendarView(new Calendario(), primaryStage);
 
 	root.setCenter(calendarView);
 

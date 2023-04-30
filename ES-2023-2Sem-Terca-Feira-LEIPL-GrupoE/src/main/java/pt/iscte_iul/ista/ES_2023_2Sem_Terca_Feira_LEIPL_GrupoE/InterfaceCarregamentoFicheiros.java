@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -144,7 +145,7 @@ public class InterfaceCarregamentoFicheiros {
 	    HttpURLConnection hr = (HttpURLConnection) url.openConnection();
 	    if (s.startsWith("http") && s.contains("raw")) {
 		InputStream im = hr.getInputStream();
-		BufferedReader br = new BufferedReader(new InputStreamReader(im));
+		BufferedReader br = new BufferedReader(new InputStreamReader(im, StandardCharsets.UTF_8));
 		if (url.getPath().endsWith("json")) {
 		    path = "horario.json";
 		    salvar(br, path);
@@ -181,17 +182,19 @@ public class InterfaceCarregamentoFicheiros {
      * @throws IOException se houver um erro de entrada/saída
      */
     private static void salvar(BufferedReader br, String path) throws IOException {
-	FileOutputStream fo = new FileOutputStream(path);
-	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fo));
-	String line = br.readLine();
-	while (line != null) {
-	    bw.write(line);
-	    bw.newLine();
-	    line = br.readLine();
+	    FileOutputStream fo = new FileOutputStream(path);
+	    BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fo, StandardCharsets.UTF_8));
+	    String line = br.readLine();
+	    while (line != null) {
+	        bw.write(line);
+	        bw.newLine();
+	        line = br.readLine();
+	    }
+	    bw.close();
+	    fo.close();
 	}
-	bw.close();
-	fo.close();
-    }
+
+
 
     /**
      * 
@@ -221,7 +224,10 @@ public class InterfaceCarregamentoFicheiros {
      * @param horario o horário a ser adicionado
      */
     private static void adicionarHorarioAoCalendario(Horario horario) {
-	ficheiros.getInterfaceHorario().addHorarioAoCalendario(horario);
+	//Limpa o calendário
+	Calendario.getCalendar().clear();
+	//Adiciona horário ao calendário
+	Calendario.addHorarioAoCalendario(horario);
     }
 
     /**

@@ -26,24 +26,17 @@ public class VistaCalendario {
      * @return o objeto CalendarView que representa a vista do calendário
      * 
      */
-
-    static Horario horario = new Horario();
-
-    public Horario getHorario() {
-	return horario;
-    }
-
     public static CalendarView createCalendarView(Calendario interfaceHorario, Stage stage) {
 	CalendarView calendarView = new CalendarView();
 	// Adiciona o calendário ao CalendarView
 	CalendarSource calendarSource = new CalendarSource("My Calendars");
-	calendarSource.getCalendars().addAll(interfaceHorario.getCalendar());
+	calendarSource.getCalendars().addAll(Calendario.getCalendar());
 	calendarView.getCalendarSources().addAll(calendarSource);
 
 	// Não deixa o utilizador criar novos eventos no calendário
 	calendarView.addEventFilter(MouseEvent.MOUSE_CLICKED, MouseEvent::consume);
 
-	Ficheiro ficheiro = new Ficheiro(stage, interfaceHorario, horario);
+	Ficheiro ficheiro = new Ficheiro(stage, interfaceHorario, new Horario());
 
 	// Obtém as referências aos botões
 	// Button loadButton = ficheiro.getLoadButton();
@@ -52,7 +45,6 @@ public class VistaCalendario {
 	loadButton.setOnAction(event -> {
 	    InterfaceCarregamentoFicheiros.createPopup(ficheiro);
 	});
-
 
 	ToolBar customToolbar = new ToolBar(loadButton, exportButton);
 
