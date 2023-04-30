@@ -41,8 +41,12 @@ public class VistaCalendario {
 	Ficheiro ficheiro = new Ficheiro(stage, interfaceHorario, horario);
 	
 	// Obtém as referências aos botões
-	Button loadButton = ficheiro.getLoadButton();
+	//Button loadButton = ficheiro.getLoadButton();
+	Button loadButton = new Button ("Carregar Ficheiro");
 	Button exportButton = ficheiro.getExportButton();
+	loadButton.setOnAction(event -> {
+	    InterfaceCarregamentoFicheiros.createPopup(ficheiro);
+        });
 
 	ToolBar customToolbar = new ToolBar(loadButton, exportButton);
 
