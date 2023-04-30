@@ -19,8 +19,8 @@ import java.util.List;
 
 public class ConversorJson {
 
-    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
-	    .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).setPrettyPrinting().create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter()).registerTypeAdapter(LocalTime.class, 
+    		new LocalTimeAdapter()).setPrettyPrinting().create();
 
     /**
      * Método para gravar uma lista de objetos Aula em um arquivo JSON.

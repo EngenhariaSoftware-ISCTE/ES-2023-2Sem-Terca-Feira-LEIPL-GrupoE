@@ -10,18 +10,7 @@ import java.time.LocalTime;
  * 
  * */
 
-/**
- * @author LMV
- *
- */
-/**
- * @author LMV
- *
- */
-/**
- * @author LMV
- *
- */
+
 public class Aula {
     private String uc;
     private String curso;
