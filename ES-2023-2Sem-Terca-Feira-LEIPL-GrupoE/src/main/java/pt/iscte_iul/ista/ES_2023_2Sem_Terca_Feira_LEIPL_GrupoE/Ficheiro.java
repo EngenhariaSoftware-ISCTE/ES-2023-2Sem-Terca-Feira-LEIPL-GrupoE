@@ -1,19 +1,18 @@
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
 /**
- * @autor Tatiana Clim
- * Classe responsável por gerir o carregamento e a exportação de arquivos CSV e
- * JSON.
+ * @autor Tatiana Clim Classe responsável por gerir o carregamento e a
+ *        exportação de arquivos CSV e JSON.
  */
 public class Ficheiro {
 
@@ -69,9 +68,9 @@ public class Ficheiro {
 	FileChooser.ExtensionFilter extFilterJSON = new FileChooser.ExtensionFilter(JSON_DESCRIPTION, JSON_EXTENSION);
 	fileChooser.getExtensionFilters().addAll(extFilterCSV, extFilterJSON);
     }
-    
+
     public void setStage(Stage s) {
-	 this.stage = s;
+	this.stage = s;
     }
 
     /**
@@ -104,19 +103,20 @@ public class Ficheiro {
 	@Override
 	public void handle(ActionEvent event) {
 	    List<Aula> aulas = new ArrayList<>();
-	   
+
 	    // Abre a janela de diálogo para o usuário escolher o arquivo
 	    File file = fileChooser.showOpenDialog(stage);
 	    if (file != null) {
 		try {
-		    if(!horario.getAulas().isEmpty()||interfaceHorario.getCalendar().getUserObject() != null) {
-			 interfaceHorario.getCalendar().clear();
 
-			 aulas = horario.getAulas();
-			 horario.getAulas().removeAll(aulas);
-			 aulas = null;
+		    if (!horario.getAulas().isEmpty() || interfaceHorario.getCalendar().getUserObject() != null) {
+			interfaceHorario.getCalendar().clear();
+
+			aulas = horario.getAulas();
+			horario.getAulas().removeAll(aulas);
+			aulas = null;
 		    }
-		   
+
 		    // Verifica a extensão do arquivo e chama a função conversora apropriada
 		    if (file.getName().endsWith("json")) {
 			aulas = ConversorJson.carregarDeArquivoJSON(file.getAbsolutePath());
@@ -126,8 +126,10 @@ public class Ficheiro {
 		    } else {
 			System.out.println("Formato de arquivo inválido!");
 		    }
+
 		    interfaceHorario.addHorarioAoCalendario(horario);
 		    stage.close();
+
 		} catch (Exception e) {
 		    // Trata o erro de carregamento do arquivo
 		    System.err.println("Erro ao carregar o arquivo: " + e.getMessage());
@@ -135,41 +137,10 @@ public class Ficheiro {
 	    }
 	}
     }
-    
-    public Calendario getInterfaceHorario () {
+
+    public Calendario getInterfaceHorario() {
 	return interfaceHorario;
     }
-    
-   /* public void addFiletoHorario(String file) {
-	 List<Aula> aulas = new ArrayList<>();
-	 if (file != null) {
-		try {
-		    if(!horario.getAulas().isEmpty()||interfaceHorario.getCalendar().getUserObject() != null) {
-			 interfaceHorario.getCalendar().clear();
-
-			 aulas = horario.getAulas();
-			 horario.getAulas().removeAll(aulas);
-			 aulas = null;
-		    }
-		   
-		    // Verifica a extensão do arquivo e chama a função conversora apropriada
-		    if (file.getName().endsWith("json")) {
-			aulas = ConversorJson.carregarDeArquivoJSON(file.getAbsolutePath());
-			aulas.forEach(aula -> horario.adicionaAula(aula));
-		    } else if (file.getName().endsWith("csv")) {
-			horario = ConversorCSV.lerCSVParaEstrutura(file.getAbsolutePath());
-		    } else {
-			System.out.println("Formato de arquivo inválido!");
-		    }
-		    interfaceHorario.addHorarioAoCalendario(horario);
-		    stage.close();
-		} catch (Exception e) {
-		    // Trata o erro de carregamento do arquivo
-		    System.err.println("Erro ao carregar o arquivo: " + e.getMessage());
-		}
-	    }
-	
-    }*/
 
     /**
      * Classe interna que lida com o evento do botão "Exportar arquivo".
