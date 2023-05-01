@@ -1,6 +1,7 @@
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,53 +15,71 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class InterfaceCriarNovoHorario {
-	
+
 	static Horario horarios = null;
 
-    public static Scene criarInterface() {
-	
-	List<String> listaUCs = horarios.listaUCs();
-        // Lista de opções para o dropdown
-        ObservableList<String> opcoes = FXCollections.observableList(listaUCs);
+	static Stage stage = new Stage();
 
-        // Cria o ListView com as opções
-        ListView<String> listView = new ListView<>(opcoes);
+	public static Scene criarInterface() {
 
-        // Permite que o usuário selecione várias opções
-        listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		List<String> listaUCs = horarios.listaUCs();
+		// Lista de opções para o dropdown
+		ObservableList<String> opcoes = FXCollections.observableList(listaUCs);
 
-        // Cria o botão "Adicionar UC"
-        Button btnAdicionarUC = new Button("Adicionar UC");
-        
-        btnAdicionarUC.setOnAction(event -> {
-		//Chamar o teu método aqui
-        	CriarNovoHorario.criarHorario(horarios, listaUCs);
-	    });
+		// Cria o ListView com as opções
+		ListView<String> listView = new ListView<>(opcoes);
 
-        // Cria uma VBox e adiciona o ListView e o botão a ela
-        VBox vbox = new VBox(10);
-        vbox.setPadding(new Insets(10));
-        vbox.getChildren().addAll(listView, btnAdicionarUC);
+		// Permite que o usuário selecione várias opções
+		listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
-        // Cria um StackPane e adiciona a VBox a ele
-        StackPane root = new StackPane();
-        root.getChildren().add(vbox);
+		ObservableList<String> selectedItems = listView.getSelectionModel().getSelectedItems();
 
-        // Cria a cena com o StackPane e define o tamanho
-        Scene scene = new Scene(root, 200, 200);
+		// Imprime as strings selecionadas no console
 
-        return scene;
-    }
+		// Cria o botão "Adicionar UC"
+		Button btnAdicionarUC = new Button("Adicionar UC");
 
-    public static void mostrarInterface(Horario horario) {
-	horarios = horario;
-	Stage stage = new Stage();
-        Scene scene = criarInterface();
+		btnAdicionarUC.setOnAction(event -> {
 
-        // Define o título da janela e exibe
-        stage.setTitle("Dropdown com seleção múltipla e botão");
-        stage.setScene(scene);
-        stage.show();
-    }	
+			List<String> aulasEscolhidas = new ArrayList<>();
+
+			for (String item : selectedItems) {
+				aulasEscolhidas.add(item);
+			}
+
+			// Chamar o teu método aqui
+			Horario horario = CriarNovoHorario.criarHorario(horarios, aulasEscolhidas);
+			aulasEscolhidas = null;
+
+			Calendario.getCalendar().clear();
+			stage.close();
+			Calendario.addHorarioAoCalendario(horario);
+		});
+
+		// Cria uma VBox e adiciona o ListView e o botão a ela
+		VBox vbox = new VBox(10);
+		vbox.setPadding(new Insets(10));
+		vbox.getChildren().addAll(listView, btnAdicionarUC);
+
+		// Cria um StackPane e adiciona a VBox a ele
+		StackPane root = new StackPane();
+		root.getChildren().add(vbox);
+
+		// Cria a cena com o StackPane e define o tamanho
+		Scene scene = new Scene(root, 200, 200);
+
+		return scene;
+	}
+
+	public static void mostrarInterface(Horario horario) {
+		horarios = horario;
+
+		Scene scene = criarInterface();
+
+		// Define o título da janela e exibe
+		stage.setTitle("Dropdown com seleção múltipla e botão");
+		stage.setScene(scene);
+		stage.show();
+	}
 
 }
