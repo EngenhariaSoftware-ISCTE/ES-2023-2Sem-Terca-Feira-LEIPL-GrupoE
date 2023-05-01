@@ -18,13 +18,13 @@ import org.junit.jupiter.api.Test;
  * @author LMV
  *
  */
-class AulaTest {
+public class AulaTest {
 
     /**
      * @throws java.lang.Exception
      */
     @BeforeAll
-    static void setUpBeforeClass() throws Exception {
+    public static void setUpBeforeClass() throws Exception {
 	// Inicialização de recursos comuns a todos os testes
     }
 
@@ -32,7 +32,7 @@ class AulaTest {
      * @throws java.lang.Exception
      */
     @AfterAll
-    static void tearDownAfterClass() throws Exception {
+    public static void tearDownAfterClass() throws Exception {
 	// Libertação de recursos comuns a todos os testes
     }
 
@@ -40,7 +40,7 @@ class AulaTest {
      * @throws java.lang.Exception
      */
     @BeforeEach
-    void setUp() throws Exception {
+    public void setUp() throws Exception {
 	// Inicialização de recursos específicos para cada teste
     }
 
@@ -48,7 +48,7 @@ class AulaTest {
      * @throws java.lang.Exception
      */
     @AfterEach
-    void tearDown() throws Exception {
+    public void tearDown() throws Exception {
 	// Libertação de recursos específicos para cada teste
     }
 
@@ -67,7 +67,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getNome()}.
      */
     @Test
-    void testGetNome() {
+    public void testGetNome() {
 	assertEquals("Matemática", aula.getUC());
     }
 
@@ -76,7 +76,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setNome(java.lang.String)}.
      */
     @Test
-    void testSetNome() {
+   public void testSetNome() {
 	aula.setUC("Português");
 	assertEquals("Português", aula.getUC());
     }
@@ -86,7 +86,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getCurso()}.
      */
     @Test
-    void testGetCurso() {
+    public void testGetCurso() {
 	System.out.println("getCurso");
 	System.out.println(aula.getCurso());
 	assertEquals("Engenharia", aula.getCurso());
@@ -97,7 +97,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setCurso(java.lang.String)}.
      */
     @Test
-    void testSetCurso() {
+    public void testSetCurso() {
 	aula.setCurso("Ciências");
 	assertEquals("Ciências", aula.getCurso());
     }
@@ -107,7 +107,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getTurno()}.
      */
     @Test
-    void testGetTurno() {
+    public void testGetTurno() {
 	assertEquals("Manhã", aula.getTurno());
     }
 
@@ -116,7 +116,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setTurno(java.lang.String)}.
      */
     @Test
-    void testSetTurno() {
+    public void testSetTurno() {
 	aula.setTurno("Tarde");
 	assertEquals("Tarde", aula.getTurno());
     }
@@ -126,7 +126,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getTurma()}.
      */
     @Test
-    void testGetTurma() {
+    public void testGetTurma() {
 	assertEquals("A1", aula.getTurma());
     }
 
@@ -135,7 +135,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setTurma(java.lang.String)}.
      */
     @Test
-    void testSetTurma() {
+    public void testSetTurma() {
 	aula.setTurma("A2");
 	assertEquals("A2", aula.getTurma());
     }
@@ -145,7 +145,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getInscritos()}.
      */
     @Test
-    void testGetInscritos() {
+    public void testGetInscritos() {
 	assertEquals(30, aula.getInscritos());
     }
 
@@ -154,7 +154,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setInscritos(int)}.
      */
     @Test
-    void testSetInscritos() {
+    public void testSetInscritos() {
 	aula.setInscritos(20);
 	assertEquals(20, aula.getInscritos());
     }
@@ -164,7 +164,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getDia()}.
      */
     @Test
-    void testGetDia() {
+    public void testGetDia() {
 	assertEquals("Segunda", aula.getDia());
     }
 
@@ -173,7 +173,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setDia(java.lang.String)}.
      */
     @Test
-    void testSetDia() {
+    public void testSetDia() {
 	aula.setDia("Terça");
 	assertEquals("Terça", aula.getDia());
     }
@@ -183,7 +183,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getHoraInicio()}.
      */
     @Test
-    void testGetHoraInicio() {
+    public void testGetHoraInicio() {
 	assertEquals(timeStart, aula.getHoraInicio());
     }
 
@@ -192,7 +192,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setHoraInicio(java.lang.String)}.
      */
     @Test
-    void testSetHoraInicio() {
+    public void testSetHoraInicio() {
 	aula.setHoraInicio(nTimeStart);
 	assertEquals(nTimeStart, aula.getHoraInicio());
     }
@@ -202,7 +202,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setHoraFim(java.lang.String)}.
      */
     @Test
-    void testSetHoraFim() {
+    public void testSetHoraFim() {
 	aula.setHoraFim(nTimeEnd);
 	assertEquals(nTimeEnd, aula.getHoraFim());
     }
@@ -212,7 +212,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getHoraFim()}.
      */
     @Test
-    void testGetHoraFim() {
+    public void testGetHoraFim() {
 	assertEquals(nTimeEnd, aula.getHoraFim());
     }
 
@@ -221,7 +221,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getData()}.
      */
     @Test
-    void testGetData() {
+    public void testGetData() {
 	assertEquals(date, aula.getData());
     }
 
@@ -230,7 +230,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setData(java.lang.String)}.
      */
     @Test
-    void testSetData() {
+    public void testSetData() {
 	aula.setData(nDate);
 	assertEquals(nDate, aula.getData());
     }
@@ -240,7 +240,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getSala()}.
      */
     @Test
-    void testGetSala() {
+    public void testGetSala() {
 	assertEquals("Sala 1", aula.getSala());
     }
 
@@ -249,7 +249,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setSala(java.lang.String)}.
      */
     @Test
-    void testSetSala() {
+    public void testSetSala() {
 	aula.setSala("Sala 2");
 	assertEquals("Sala 2", aula.getSala());
     }
@@ -259,7 +259,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#setLotacao(int)}.
      */
     @Test
-    void testSetLotacao() {
+    public void testSetLotacao() {
 	aula.setLotacao(40);
 	assertEquals(40, aula.getLotacao());
     }
@@ -269,7 +269,7 @@ class AulaTest {
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula#getLotacao()}.
      */
     @Test
-    void testGetLotacao() {
+    public void testGetLotacao() {
 	assertEquals(40, aula.getLotacao());
     }
 
