@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test;
  * @author LMV
  *
  */
-class HorarioTest {
+public class HorarioTest {
 
     private static LocalTime timeStart1 = LocalTime.of(8, 0, 0);
     private static LocalTime timeStart2 = LocalTime.of(9, 0, 0);
