@@ -14,14 +14,14 @@ import com.google.gson.JsonSerializer;
 
 public class LocalTimeAdapter implements JsonSerializer<LocalTime>, JsonDeserializer<LocalTime> {
 
-    @Override
-    public JsonElement serialize(LocalTime time, Type typeOfSrc, JsonSerializationContext context) {
-	return new JsonPrimitive(time.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-    }
+	@Override
+	public JsonElement serialize(LocalTime time, Type typeOfSrc, JsonSerializationContext context) {
+		return new JsonPrimitive(time.format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+	}
 
-    @Override
-    public LocalTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
-	    throws JsonParseException {
-	return LocalTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("HH:mm:ss"));
-    }
+	@Override
+	public LocalTime deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+			throws JsonParseException {
+		return LocalTime.parse(json.getAsString(), DateTimeFormatter.ofPattern("HH:mm:ss"));
+	}
 }

@@ -17,47 +17,57 @@ import javafx.stage.Stage;
  */
 
 public class VistaCalendario {
-    /**
-     * Cria e retorna a vista do calendário para ser exibida na interface gráfica.
-     * 
-     * @param interfaceHorario o objeto que contém as aulas a serem exibidas no
-     *                         calendário
-     * @param stage            o palco principal da aplicação
-     * @return o objeto CalendarView que representa a vista do calendário
-     * 
-     */
-    public static CalendarView createCalendarView(Calendario interfaceHorario, Stage stage) {
-	CalendarView calendarView = new CalendarView();
-	// Adiciona o calendário ao CalendarView
-	CalendarSource calendarSource = new CalendarSource("My Calendars");
-	calendarSource.getCalendars().addAll(Calendario.getCalendar());
-	calendarView.getCalendarSources().addAll(calendarSource);
+	/**
+	 * Cria e retorna a vista do calendário para ser exibida na interface gráfica.
+	 * 
+	 * @param interfaceHorario o objeto que contém as aulas a serem exibidas no
+	 *                         calendário
+	 * @param stage            o palco principal da aplicação
+	 * @return o objeto CalendarView que representa a vista do calendário
+	 * 
+	 */
+	public static CalendarView createCalendarView(Calendario interfaceHorario, Stage stage) {
+		CalendarView calendarView = new CalendarView();
+		// Adiciona o calendário ao CalendarView
+		CalendarSource calendarSource = new CalendarSource("My Calendars");
+		calendarSource.getCalendars().addAll(Calendario.getCalendar());
+		calendarView.getCalendarSources().addAll(calendarSource);
 
-	// Não deixa o utilizador criar novos eventos no calendário
-	calendarView.addEventFilter(MouseEvent.MOUSE_CLICKED, MouseEvent::consume);
+		// Não deixa o utilizador criar novos eventos no calendário
+		calendarView.addEventFilter(MouseEvent.MOUSE_CLICKED, MouseEvent::consume);
 
-	Ficheiro ficheiro = new Ficheiro(stage, interfaceHorario, new Horario());
+		Ficheiro ficheiro = new Ficheiro(stage, interfaceHorario, new Horario());
 
-	// Obtém as referências aos botões
-	// Button loadButton = ficheiro.getLoadButton();
-	Button loadButton = new Button("Carregar Ficheiro");
-	Button exportButton = ficheiro.getExportButton();
-	loadButton.setOnAction(event -> {
-	    InterfaceCarregamentoFicheiros.createPopup(ficheiro);
-	});
+		// Obtém as referências aos botões
+		// Button loadButton = ficheiro.getLoadButton();
+		Button loadButton = new Button("Carregar Ficheiro");
+		Button exportButton = ficheiro.getExportButton();
+//<<<<<<< HEAD
 
-	ToolBar customToolbar = new ToolBar(loadButton, exportButton);
+		// Novo botão para criar novo horário criado pelo(a) aluno(a)
+		Button criarNovoHorario = new Button("Criar Horário");
+		criarNovoHorario.setOnAction(event -> {
+			InterfaceCriarNovoHorario.mostrarInterface(ficheiro.getHorario());
+		});
 
-	// Adiciona a barra de ferramentas personalizada ao cabeçalho do CalendarView
-	calendarView.setHeader(customToolbar);
+		ToolBar customToolbar = new ToolBar(loadButton, exportButton, criarNovoHorario);
+//=======
+		loadButton.setOnAction(event -> {
+			InterfaceCarregamentoFicheiros.createPopup(ficheiro);
+		});
 
-	// desabilita o botão de calendários
-	calendarView.setShowAddCalendarButton(false);
-	calendarView.setCalendarVisibility(null, false);
+		// ToolBar customToolbar = new ToolBar(loadButton, exportButton);
 
-	// Semana comeca com segunda-feira
-	calendarView.weekFieldsProperty().set(WeekFields.ISO);
+		// Adiciona a barra de ferramentas personalizada ao cabeçalho do CalendarView
+		calendarView.setHeader(customToolbar);
 
-	return calendarView;
-    }
+		// desabilita o botão de calendários
+		calendarView.setShowAddCalendarButton(false);
+		calendarView.setCalendarVisibility(null, false);
+
+		// Semana comeca com segunda-feira
+		calendarView.weekFieldsProperty().set(WeekFields.ISO);
+
+		return calendarView;
+	}
 }
