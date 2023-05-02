@@ -39,21 +39,22 @@ public class ConversorJson {
 		}
 	}
 
-	/**
-	 * Método para carregar uma lista de objetos Aula a partir de um arquivo JSON.
-	 *
-	 * @param filePath Caminho do arquivo JSON a ser lido.
-	 * @return Uma lista de objetos Aula extraídos do arquivo JSON.
-	 * @throws IOException Se ocorrer um erro durante a leitura do arquivo.
-	 */
-	public static List<Aula> carregarDeArquivoJSON(String filePath) throws IOException {
-		try (InputStream inputStream = new FileInputStream(filePath);
-				Reader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
-			Type listType = new TypeToken<List<Aula>>() {
-			}.getType();
-			List<Aula> aulas = gson.fromJson(reader, listType);
-			return aulas;
-		}
+
+    /**
+     * Método para carregar uma lista de objetos Aula a partir de um arquivo JSON.
+     *
+     * @param filePath Caminho do arquivo JSON a ser lido.
+     * @return Uma lista de objetos Aula extraídos do arquivo JSON.
+     * @throws IOException Se ocorrer um erro durante a leitura do arquivo.
+     */
+    public static List<Aula> carregarDeArquivoJSON(String filePath) throws IOException {
+	try (InputStream inputStream = new FileInputStream(filePath);
+		Reader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
+	    Type listType = new TypeToken<List<Aula>>() {
+	    }.getType();
+	    List<Aula> aulas = gson.fromJson(reader, listType);
+	    return aulas;
 	}
+    }
 
 }

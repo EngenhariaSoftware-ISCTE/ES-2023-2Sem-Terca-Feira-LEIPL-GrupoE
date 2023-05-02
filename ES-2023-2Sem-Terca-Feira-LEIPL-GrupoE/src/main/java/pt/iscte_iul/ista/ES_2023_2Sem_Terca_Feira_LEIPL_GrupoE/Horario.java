@@ -126,13 +126,8 @@ public class Horario {
 		return this.horario;
 	}
 
-	/*
-	 * <<<<<<< HEAD
-	 * 
-	 * /**
-	 * 
-	 * @Override
-	 */
+	
+	 @Override
 	public String toString() {
 		return "Horario [horario=" + horario + "]";
 	}
@@ -149,5 +144,48 @@ public class Horario {
 		}
 		return ucs;
 	}
+
+    /**
+     * Retorna uma lista contendo todas as aulas que possuem sobreposição de
+     * horários. Duas aulas possuem sobreposição se são no mesmo dia e horário.
+     * 
+     * @return lista de aulas em sobreposição
+     */
+    public List<Aula> getAulasEmSobreposicao() {
+	List<Aula> aulasEmSobreposicao = new ArrayList<>();
+
+	for (int i = 0; i < horario.size(); i++) {
+	    Aula aula1 = horario.get(i);
+	    for (int j = i + 1; j < horario.size(); j++) {
+		Aula aula2 = horario.get(j);
+		if (aula1.getData().equals(aula2.getData()) && aula1.getHoraInicio().equals(aula2.getHoraInicio())) {
+		    if (!aulasEmSobreposicao.contains(aula1)) {
+			aulasEmSobreposicao.add(aula1);
+		    }
+		    if (!aulasEmSobreposicao.contains(aula2)) {
+			aulasEmSobreposicao.add(aula2);
+		    }
+		}
+	    }
+	}
+
+	return aulasEmSobreposicao;
+    }
+
+    /**
+     * Retorna uma lista contendo todas as aulas que possuem lotação esgotada, ou
+     * seja, o número de inscritos é igual à lotação máxima da aula.
+     * 
+     * @return lista de aulas com lotação esgotada
+     */
+    public List<Aula> getAulasComLotacaoEsgotada() {
+	List<Aula> aulasComLotacaoEsgotada = new ArrayList<>();
+	for (Aula aula : horario) {
+	    if (aula.getInscritos() == aula.getLotacao()) {
+		aulasComLotacaoEsgotada.add(aula);
+	    }
+	}
+	return aulasComLotacaoEsgotada;
+    }
 
 }

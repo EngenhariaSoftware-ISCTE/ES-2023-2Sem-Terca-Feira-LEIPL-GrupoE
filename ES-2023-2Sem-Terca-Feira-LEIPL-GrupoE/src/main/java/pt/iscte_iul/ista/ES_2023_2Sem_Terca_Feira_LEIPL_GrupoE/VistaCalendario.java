@@ -42,7 +42,7 @@ public class VistaCalendario {
 		// Button loadButton = ficheiro.getLoadButton();
 		Button loadButton = new Button("Carregar Ficheiro");
 		Button exportButton = ficheiro.getExportButton();
-//<<<<<<< HEAD
+
 
 		// Novo botão para criar novo horário criado pelo(a) aluno(a)
 		Button criarNovoHorario = new Button("Criar Horário");
@@ -51,7 +51,7 @@ public class VistaCalendario {
 		});
 
 		ToolBar customToolbar = new ToolBar(loadButton, exportButton, criarNovoHorario);
-//=======
+
 		loadButton.setOnAction(event -> {
 			InterfaceCarregamentoFicheiros.createPopup(ficheiro);
 		});

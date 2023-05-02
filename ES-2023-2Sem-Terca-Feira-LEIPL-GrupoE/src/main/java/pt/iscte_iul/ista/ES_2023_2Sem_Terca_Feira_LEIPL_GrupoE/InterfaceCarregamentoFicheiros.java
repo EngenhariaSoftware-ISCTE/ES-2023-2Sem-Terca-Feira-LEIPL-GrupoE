@@ -173,26 +173,27 @@ public class InterfaceCarregamentoFicheiros {
 		}
 	}
 
-	/**
-	 * 
-	 * Método que salva um arquivo a partir de um BufferedReader.
-	 * 
-	 * @param br   o BufferedReader que será utilizado para ler o arquivo
-	 * @param path o caminho do arquivo que será salvo
-	 * @throws IOException se houver um erro de entrada/saída
-	 */
-	private static void salvar(BufferedReader br, String path) throws IOException {
-		FileOutputStream fo = new FileOutputStream(path);
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fo, StandardCharsets.UTF_8));
-		String line = br.readLine();
-		while (line != null) {
-			bw.write(line);
-			bw.newLine();
-			line = br.readLine();
-		}
-		bw.close();
-		fo.close();
+    /**
+     * 
+     * Método que salva um arquivo a partir de um BufferedReader.
+     * 
+     * @param br   o BufferedReader que será utilizado para ler o arquivo
+     * @param path o caminho do arquivo que será salvo
+     * @throws IOException se houver um erro de entrada/saída
+     */
+    private static void salvar(BufferedReader br, String path) throws IOException {
+	FileOutputStream fo = new FileOutputStream(path);
+	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fo, StandardCharsets.UTF_8));
+	String line = br.readLine();
+	while (line != null) {
+	    bw.write(line);
+	    bw.newLine();
+	    line = br.readLine();
 	}
+	bw.close();
+	fo.close();
+    }
+
 
 	/**
 	 * 
@@ -215,18 +216,17 @@ public class InterfaceCarregamentoFicheiros {
 		}
 		return horario;
 	}
-
-	/**
-	 * Método que adiciona um horário ao calendário da aplicação.
-	 * 
-	 * @param horario o horário a ser adicionado
-	 */
-	private static void adicionarHorarioAoCalendario(Horario horario) {
-		// Limpa o calendário
-		Calendario.getCalendar().clear();
-		// Adiciona horário ao calendário
-		Calendario.addHorarioAoCalendario(horario);
-	}
+    /**
+     * Método que adiciona um horário ao calendário da aplicação.
+     * 
+     * @param horario o horário a ser adicionado
+     */
+    private static void adicionarHorarioAoCalendario(Horario horario) {
+	// Limpa o calendário
+	Calendario.getCalendar().clear();
+	// Adiciona horário ao calendário
+	Calendario.addHorarioAoCalendario(horario);
+    }
 
 	/**
 	 * Método que fecha a janela pop-up atual.
