@@ -1,6 +1,9 @@
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 
 import net.fortuna.ical4j.data.CalendarBuilder;
 import net.fortuna.ical4j.model.Calendar;
@@ -18,10 +21,11 @@ public class ToICalendar {
      * @return Objeto Calendar do ical4j com os dados convertidos
      * @throws Exception Lança uma exceção em caso de erro na conversão
      */
-    public static Calendar convertStringToICalendar(String iCalendarData) throws Exception {
-	try (StringReader reader = new StringReader(iCalendarData)) {
-	    CalendarBuilder builder = new CalendarBuilder();
-	    return builder.build(reader);
+	public static Calendar convertStringToICalendar(String iCalendarData) throws Exception {
+		try (ByteArrayInputStream inputStream = new ByteArrayInputStream(iCalendarData.getBytes(StandardCharsets.UTF_8));
+			 InputStreamReader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8)) {
+			CalendarBuilder builder = new CalendarBuilder();
+			return builder.build(reader);
+		}
 	}
-    }
 }
