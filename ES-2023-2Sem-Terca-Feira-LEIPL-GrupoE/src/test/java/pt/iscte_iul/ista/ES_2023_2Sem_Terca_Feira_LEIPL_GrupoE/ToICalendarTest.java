@@ -9,7 +9,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StringToICalendarTest {
+class ToICalendarTest {
 
     @Test
     void convertStringToICalendar() {
@@ -29,7 +29,7 @@ class StringToICalendarTest {
                 "END:VCALENDAR\r\n";
 
         try {
-            Calendar calendar = StringToICalendar.convertStringToICalendar(iCalendarData);
+            Calendar calendar = ToICalendar.convertStringToICalendar(iCalendarData);
 
             assertNotNull(calendar);
             assertEquals(1, calendar.getComponents(Component.VEVENT).size());
@@ -43,6 +43,8 @@ class StringToICalendarTest {
             assertTrue(eventOptional.isPresent());
             VEvent event = eventOptional.get();
             assertNotNull(event);
+            //print dstamp
+            System.out.println(event.getEndDate().get().getDate().getClass());
             assertEquals("Example Event", event.getProperty("SUMMARY").get().getValue());
             assertEquals("Example Location", event.getProperty("LOCATION").get().getValue());
 
