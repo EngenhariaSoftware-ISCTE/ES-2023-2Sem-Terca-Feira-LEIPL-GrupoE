@@ -146,12 +146,23 @@ public class Horario {
     }
 
     /**
-     * Retorna uma lista contendo todas as aulas que possuem sobreposição de
-     * horários. Duas aulas possuem sobreposição se são no mesmo dia e horário.
-     * 
-     * @return lista de aulas em sobreposição
+     * Checks if two time intervals overlap.
+     *
+     * @param inicio1 The start time of the first interval.
+     * @param fim1    The end time of the first interval.
+     * @param inicio2 The start time of the second interval.
+     * @param fim2    The end time of the second interval.
+     * @return {@code true} if the intervals overlap, {@code false} otherwise.
      */
-    /*
+    private boolean isIntervaloCruzado(LocalTime inicio1, LocalTime fim1, LocalTime inicio2, LocalTime fim2) {
+	return inicio1.isBefore(fim2) && fim1.isAfter(inicio2);
+    }
+
+    /**
+     * Retrieves a list of classes that have overlapping schedules.
+     *
+     * @return A list of classes with overlapping schedules.
+     */
     public List<Aula> getAulasEmSobreposicao() {
 	List<Aula> aulasEmSobreposicao = new ArrayList<>();
 
@@ -159,52 +170,25 @@ public class Horario {
 	    Aula aula1 = horario.get(i);
 	    for (int j = i + 1; j < horario.size(); j++) {
 		Aula aula2 = horario.get(j);
-		if (aula1.getData().equals(aula2.getData()) && aula1.getHoraInicio().equals(aula2.getHoraInicio())) {
-		    if (!aulasEmSobreposicao.contains(aula1)) {
-			aulasEmSobreposicao.add(aula1);
-		    }
-		    if (!aulasEmSobreposicao.contains(aula2)) {
-			aulasEmSobreposicao.add(aula2);
+
+		// Verificar se as aulas têm a mesma data
+		if (aula1.getData().equals(aula2.getData())) {
+		    // Verificar se os intervalos de tempo se cruzam
+		    if (isIntervaloCruzado(aula1.getHoraInicio(), aula1.getHoraFim(), aula2.getHoraInicio(),
+			    aula2.getHoraFim())) {
+			if (!aulasEmSobreposicao.contains(aula1)) {
+			    aulasEmSobreposicao.add(aula1);
+			}
+			if (!aulasEmSobreposicao.contains(aula2)) {
+			    aulasEmSobreposicao.add(aula2);
+			}
 		    }
 		}
 	    }
 	}
 
 	return aulasEmSobreposicao;
-    }*/
-    
-    private boolean isIntervaloCruzado(LocalTime inicio1, LocalTime fim1, LocalTime inicio2, LocalTime fim2) {
-	    return inicio1.isBefore(fim2) && fim1.isAfter(inicio2);
-	}
-    
-    public List<Aula> getAulasEmSobreposicao() {
-	    List<Aula> aulasEmSobreposicao = new ArrayList<>();
-
-	    for (int i = 0; i < horario.size(); i++) {
-	        Aula aula1 = horario.get(i);
-	        for (int j = i + 1; j < horario.size(); j++) {
-	            Aula aula2 = horario.get(j);
-	            
-	            // Verificar se as aulas têm a mesma data
-	            if (aula1.getData().equals(aula2.getData())) {
-	                // Verificar se os intervalos de tempo se cruzam
-	                if (isIntervaloCruzado(aula1.getHoraInicio(), aula1.getHoraFim(), aula2.getHoraInicio(), aula2.getHoraFim())) {
-	                    if (!aulasEmSobreposicao.contains(aula1)) {
-	                        aulasEmSobreposicao.add(aula1);
-	                    }
-	                    if (!aulasEmSobreposicao.contains(aula2)) {
-	                        aulasEmSobreposicao.add(aula2);
-	                    }
-	                }
-	            }
-	        }
-	    }
-
-	    return aulasEmSobreposicao;
-	}
-
-	
-
+    }
 
     /**
      * Retorna uma lista contendo todas as aulas que possuem lotação esgotada, ou

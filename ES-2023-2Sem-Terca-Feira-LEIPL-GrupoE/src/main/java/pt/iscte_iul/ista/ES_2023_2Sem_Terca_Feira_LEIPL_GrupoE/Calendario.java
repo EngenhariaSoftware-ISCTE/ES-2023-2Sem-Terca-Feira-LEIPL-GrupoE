@@ -16,7 +16,7 @@ import com.calendarfx.model.Entry;
 
 public class Calendario {
     private static Calendar<Aula> calendar = new Calendar<>("Calendar");
-    
+
     private static List<Aula> getSobrelotacaoSobreposicao(Horario horario) {
 	List<Aula> aulasEmSobreposicao = horario.getAulasEmSobreposicao();
 	List<Aula> aulasSobrelotadas = horario.getAulasComLotacaoEsgotada();
@@ -33,9 +33,7 @@ public class Calendario {
 	aulasConcatenadas.addAll(setAulasSobrelotadas);
 
 	// Opcional: converter aulasConcatenadas de volta para uma lista, se necessário
-	List<Aula> resultadoFinal = new ArrayList<>(aulasConcatenadas);
-	
-	return resultadoFinal;
+	return new ArrayList<>(aulasConcatenadas);
     }
 
     /**
@@ -46,8 +44,7 @@ public class Calendario {
      */
     public static void addHorarioAoCalendario(Horario horario) {
 	List<Aula> aulas = getSobrelotacaoSobreposicao(horario);
-	
-	
+
 	for (Aula aula : horario.getAulas()) {
 
 	    Entry<Aula> entry = new Entry<>(aula.displayEntry());
@@ -57,12 +54,11 @@ public class Calendario {
 	    entry.setInterval(aula.getHoraInicio(), aula.getHoraFim());
 
 	    if (!aulas.isEmpty() && aulas.contains(aula)) {
-		 entry.getStyleClass().add("minha-classe-de-estilo");
-	    }else {
+		entry.getStyleClass().add("minha-classe-de-estilo");
+	    } else {
 		entry.getStyleClass().add("classe-padrao");
 	    }
-	    
-	    
+
 	    calendar.addEntry(entry);
 	}
     }

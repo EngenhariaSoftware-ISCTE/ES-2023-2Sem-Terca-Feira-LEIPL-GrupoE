@@ -79,34 +79,32 @@ public class InterfaceCarregamentoFicheiros {
      * 
      * @return Botão para seleção de arquivos remotos.
      */
-	private static Button createWebCalButton() {
-		Button remoteFilesButton = new Button("Webcal");
-		remoteFilesButton.setMaxSize(Double.MAX_VALUE * 0.5, Double.MAX_VALUE * 0.5);
-		remoteFilesButton.setOnAction(event -> {
-			TextInputDialog urlInputDialog = new TextInputDialog("https://");
-			urlInputDialog.setTitle("Webcal URL");
-			urlInputDialog.setHeaderText("Insira o Webcal URL");
-			urlInputDialog.setContentText("URL:");
+    private static Button createWebCalButton() {
+	Button remoteFilesButton = new Button("Webcal");
+	remoteFilesButton.setMaxSize(Double.MAX_VALUE * 0.5, Double.MAX_VALUE * 0.5);
+	remoteFilesButton.setOnAction(event -> {
+	    TextInputDialog urlInputDialog = new TextInputDialog("https://");
+	    urlInputDialog.setTitle("Webcal URL");
+	    urlInputDialog.setHeaderText("Insira o Webcal URL");
+	    urlInputDialog.setContentText("URL:");
 
-			Optional<String> result = urlInputDialog.showAndWait();
+	    Optional<String> result = urlInputDialog.showAndWait();
 
-			result.ifPresent(url -> {
-				try {
-					String webcalContent = LeitorHorarioHTTP.lerConteudoDeURL(url);
-					System.out.println(webcalContent);
+	    result.ifPresent(url -> {
+		try {
+		    String webcalContent = LeitorHorarioHTTP.lerConteudoDeURL(url);
 
-					Horario horario = ICalToHorario.convertCalendarToHorario(ToICalendar.convertStringToICalendar(webcalContent));
-					adicionarHorarioAoCalendario(horario);
-
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-
-				// closePopup
-			});
-		});
-		return remoteFilesButton;
-	}
+		    Horario horario = ICalToHorario
+			    .convertCalendarToHorario(ToICalendar.convertStringToICalendar(webcalContent));
+		    adicionarHorarioAoCalendario(horario);
+		    closePopup();
+		} catch (Exception e) {
+		    Error.setError("Error", e.getMessage());
+		}
+	    });
+	});
+	return remoteFilesButton;
+    }
 
     /**
      * 
@@ -168,7 +166,7 @@ public class InterfaceCarregamentoFicheiros {
 		}
 		Horario horario = lerHorario(path);
 		adicionarHorarioAoCalendario(horario);
-		fecharPopup();
+		closePopup();
 		Files.deleteIfExists(Paths.get(path));
 		im.close();
 	    } else {
@@ -234,13 +232,6 @@ public class InterfaceCarregamentoFicheiros {
 	Calendario.getCalendar().clear();
 	// Adiciona horário ao calendário
 	Calendario.addHorarioAoCalendario(horario);
-    }
-
-    /**
-     * Método que fecha a janela pop-up atual.
-     */
-    private static void fecharPopup() {
-	popup.close();
     }
 
     /**
