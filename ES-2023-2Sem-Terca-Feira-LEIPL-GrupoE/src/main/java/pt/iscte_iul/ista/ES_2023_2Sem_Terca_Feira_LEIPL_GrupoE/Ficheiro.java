@@ -183,9 +183,9 @@ public class Ficheiro {
 		try {
 		    // Verifica a extensão do arquivo e chama a função conversora apropriada
 		    if (file.getName().endsWith("json")) {
-			ConversorJson.gravarEmArquivoJSON(horario.getAulas(), file.getAbsolutePath());
+			ConversorJson.gravarEmArquivoJSON(Calendario.getHorario().getAulas(), file.getAbsolutePath());
 		    } else if (file.getName().endsWith("csv")) {
-			ConversorCSV.escreveCSV(horario, file.getAbsolutePath());
+			ConversorCSV.escreveCSV(Calendario.getHorario(), file.getAbsolutePath());
 		    } else {
 			Error.setError("Error", "Formato de arquivo inválido!");
 		    }

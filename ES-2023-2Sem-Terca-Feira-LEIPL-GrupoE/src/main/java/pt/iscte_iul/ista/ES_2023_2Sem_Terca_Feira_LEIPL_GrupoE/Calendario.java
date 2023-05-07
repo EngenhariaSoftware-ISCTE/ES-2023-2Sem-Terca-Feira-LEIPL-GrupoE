@@ -15,7 +15,10 @@ import com.calendarfx.model.Entry;
  */
 
 public class Calendario {
+
     private static Calendar<Aula> calendar = new Calendar<>("Calendar");
+
+    public static Horario horarios;
 
     private static List<Aula> getSobrelotacaoSobreposicao(Horario horario) {
 	List<Aula> aulasEmSobreposicao = horario.getAulasEmSobreposicao();
@@ -45,6 +48,7 @@ public class Calendario {
     public static void addHorarioAoCalendario(Horario horario) {
 	List<Aula> aulas = getSobrelotacaoSobreposicao(horario);
 
+	horarios = horario;
 	for (Aula aula : horario.getAulas()) {
 
 	    Entry<Aula> entry = new Entry<>(aula.displayEntry());
@@ -61,6 +65,15 @@ public class Calendario {
 
 	    calendar.addEntry(entry);
 	}
+    }
+
+    /**
+     * Retorna o horario de aulas.
+     * 
+     * @return objeto Horario contendo as aulas adicionadas ao calendário
+     */
+    public static Horario getHorario() {
+	return horarios;
     }
 
     /**

@@ -20,7 +20,7 @@ import javafx.stage.Stage;
  */
 public class InterfaceCriarNovoHorario {
 
-    static Horario horarios = null;
+    static Horario horarios = new Horario();
 
     static Stage stage = new Stage();
 
@@ -31,7 +31,10 @@ public class InterfaceCriarNovoHorario {
      */
     public static Scene criarInterface() {
 
+	horarios = Calendario.getHorario();
+
 	List<String> listaUCs = horarios.listaUCs();
+
 	// Lista de opções para o dropdown
 	ObservableList<String> opcoes = FXCollections.observableList(listaUCs);
 
