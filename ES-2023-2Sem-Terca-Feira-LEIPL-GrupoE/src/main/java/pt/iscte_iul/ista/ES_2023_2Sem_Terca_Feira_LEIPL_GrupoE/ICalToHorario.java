@@ -76,6 +76,8 @@ public class ICalToHorario {
 	aula.setHoraFim(dataFim != null ? dataFim.toLocalTime() : null);
 	aula.setSala(sala);
 
+	System.out.println(aula);
+
 	return aula;
     }
 

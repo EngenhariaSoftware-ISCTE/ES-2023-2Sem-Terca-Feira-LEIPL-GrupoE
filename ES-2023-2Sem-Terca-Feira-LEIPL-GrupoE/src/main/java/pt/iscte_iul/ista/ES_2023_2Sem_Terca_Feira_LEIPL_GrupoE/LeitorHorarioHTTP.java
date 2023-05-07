@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author Luis Rosa Classe LeitorHorarioHTTP que lê o conteúdo de um URL do
@@ -22,7 +23,8 @@ public class LeitorHorarioHTTP {
 	urlString = converterWebcalHttp(urlString);
 	URL url = new URL(urlString);
 	URLConnection connection = url.openConnection();
-	BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+	BufferedReader in = new BufferedReader(
+		new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8));
 	String inputLine;
 	StringBuilder content = new StringBuilder();
 	while ((inputLine = in.readLine()) != null) {

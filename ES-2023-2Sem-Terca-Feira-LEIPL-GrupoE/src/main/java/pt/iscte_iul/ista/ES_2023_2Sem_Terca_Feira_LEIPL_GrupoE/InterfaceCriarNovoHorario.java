@@ -88,7 +88,6 @@ public class InterfaceCriarNovoHorario {
      * @param horario o horário existente
      */
     public static void mostrarInterface(Horario horario) {
-	System.out.println("Horario importado " + horario);
 	horarios = horario;
 
 	Scene scene = criarInterface();
