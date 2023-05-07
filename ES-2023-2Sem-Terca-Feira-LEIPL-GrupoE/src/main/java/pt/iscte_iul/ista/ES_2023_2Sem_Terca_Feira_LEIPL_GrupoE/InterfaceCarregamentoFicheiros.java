@@ -79,17 +79,34 @@ public class InterfaceCarregamentoFicheiros {
      * 
      * @return Botão para seleção de arquivos remotos.
      */
+	private static Button createWebCalButton() {
+		Button remoteFilesButton = new Button("Webcal");
+		remoteFilesButton.setMaxSize(Double.MAX_VALUE * 0.5, Double.MAX_VALUE * 0.5);
+		remoteFilesButton.setOnAction(event -> {
+			TextInputDialog urlInputDialog = new TextInputDialog("https://");
+			urlInputDialog.setTitle("Webcal URL");
+			urlInputDialog.setHeaderText("Insira o Webcal URL");
+			urlInputDialog.setContentText("URL:");
 
-    private static Button createWebCalButton() {
-	Button remoteFilesButton = new Button("Webcal");
-	remoteFilesButton.setMaxSize(Double.MAX_VALUE * 0.5, Double.MAX_VALUE * 0.5);
-	remoteFilesButton.setOnAction(event -> {
-	    // Método para transformar de webcal para horário
-	    // adicionarHorarioAoCalendario(Horario)
-	    // closePopup
-	});
-	return remoteFilesButton;
-    }
+			Optional<String> result = urlInputDialog.showAndWait();
+
+			result.ifPresent(url -> {
+				try {
+					String webcalContent = LeitorHorarioHTTP.lerConteudoDeURL(url);
+					System.out.println(webcalContent);
+
+					Horario horario = ICalToHorario.convertCalendarToHorario(ToICalendar.convertStringToICalendar(webcalContent));
+					adicionarHorarioAoCalendario(horario);
+
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				// closePopup
+			});
+		});
+		return remoteFilesButton;
+	}
 
     /**
      * 
