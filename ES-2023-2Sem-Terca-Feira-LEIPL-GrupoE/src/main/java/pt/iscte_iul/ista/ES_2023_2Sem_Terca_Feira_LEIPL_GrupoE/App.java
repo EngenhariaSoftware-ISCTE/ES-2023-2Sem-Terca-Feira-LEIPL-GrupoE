@@ -15,8 +15,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * @autor Tatiana Clim Classe principal do projeto que inicializa a interface
- *        gráfica do usuário.
+ * Classe principal do projeto que inicializa a interface gráfica do usuário.
+ * 
+ * @author Tatiana Clim
  */
 public class App extends Application {
 
@@ -26,21 +27,23 @@ public class App extends Application {
      * @param primaryStage o palco primário da aplicação
      * @throws ParseException se ocorrer um erro de análise ao iniciar a interface
      *                        gráfica
-     * @throws IOException
-     * @throws CsvException
+     * @throws IOException    se ocorrer um erro de I/O ao iniciar a interface
+     *                        gráfica
+     * @throws CsvException   se ocorrer um erro ao manipular o arquivo CSV
      */
     @Override
     public void start(Stage primaryStage) throws ParseException, IOException, CsvException {
 	BorderPane root = new BorderPane();
+	Calendario calendar = new Calendario();
 
 	// Cria um calendário
-	CalendarView calendarView = VistaCalendario.createCalendarView(new Calendario(), primaryStage);
+	CalendarView calendarView = VistaCalendario.createCalendarView(calendar, primaryStage);
 
 	root.setCenter(calendarView);
 
 	Scene scene = new Scene(root, 800, 600);
-	primaryStage.setScene(scene);
 	scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+	primaryStage.setScene(scene);
 	primaryStage.setTitle("Calendar");
 	primaryStage.show();
     }

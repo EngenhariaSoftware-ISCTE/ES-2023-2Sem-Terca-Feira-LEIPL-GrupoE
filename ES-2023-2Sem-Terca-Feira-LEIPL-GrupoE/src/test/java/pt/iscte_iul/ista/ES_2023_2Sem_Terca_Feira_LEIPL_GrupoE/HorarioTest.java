@@ -24,68 +24,68 @@ import org.junit.jupiter.api.Test;
  */
 public class HorarioTest {
 
-	private static LocalTime timeStart1 = LocalTime.of(8, 0, 0);
-	private static LocalTime timeStart2 = LocalTime.of(9, 0, 0);
-	private static LocalTime timeStart3 = LocalTime.of(10, 0, 0);
-	private static LocalTime timeEnd1 = LocalTime.of(10, 0, 0);
-	private static LocalTime timeEnd2 = LocalTime.of(11, 0, 0);
-	private static LocalDate date1 = LocalDate.of(2023, 04, 03);
-	private static LocalDate date2 = LocalDate.of(2023, 04, 03);
-	private static LocalDate date3 = LocalDate.of(2023, 04, 03);
+    private static LocalTime timeStart1 = LocalTime.of(8, 0, 0);
+    private static LocalTime timeStart2 = LocalTime.of(9, 0, 0);
+    private static LocalTime timeStart3 = LocalTime.of(10, 0, 0);
+    private static LocalTime timeEnd1 = LocalTime.of(10, 0, 0);
+    private static LocalTime timeEnd2 = LocalTime.of(11, 0, 0);
+    private static LocalDate date1 = LocalDate.of(2023, 04, 03);
+    private static LocalDate date2 = LocalDate.of(2023, 04, 03);
+    private static LocalDate date3 = LocalDate.of(2023, 04, 03);
 
-	private static Horario horario = new Horario();
+    private static Horario horario = new Horario();
 
-	private static Aula aula1 = new Aula("Curso1", "UC1", "T2", "A3", 30, "Segunda", timeStart3, timeEnd1, date3,
-			"Sala 1", 20);
-	private static Aula aula2 = new Aula("Curso2", "UC2", "T1", "A1", 30, "Terça", timeStart2, timeEnd1, date2,
-			"Sala 2", 30);
-	private static Aula aula3 = new Aula("Curso3", "UC3", "T3", "A2", 20, "Quarta", timeStart1, timeEnd2, date1,
-			"Sala 3", 40);
+    private static Aula aula1 = new Aula("Curso1", "UC1", "T2", "A3", 30, "Segunda", timeStart3, timeEnd1, date3,
+	    "Sala 1", 20);
+    private static Aula aula2 = new Aula("Curso2", "UC2", "T1", "A1", 30, "Terça", timeStart2, timeEnd1, date2,
+	    "Sala 2", 30);
+    private static Aula aula3 = new Aula("Curso3", "UC3", "T3", "A2", 20, "Quarta", timeStart1, timeEnd2, date1,
+	    "Sala 3", 40);
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeAll
-	public static void setUpBeforeClass() throws Exception {
-		horario.adicionaAula(aula1);
-		horario.adicionaAula(aula2);
-		horario.adicionaAula(aula3);
-	}
+    /**
+     * @throws java.lang.Exception
+     */
+    @BeforeAll
+    public static void setUpBeforeClass() throws Exception {
+	horario.adicionaAula(aula1);
+	horario.adicionaAula(aula2);
+	horario.adicionaAula(aula3);
+    }
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterAll
-	public static void tearDownAfterClass() throws Exception {
-	}
+    /**
+     * @throws java.lang.Exception
+     */
+    @AfterAll
+    public static void tearDownAfterClass() throws Exception {
+    }
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeEach
-	public void setUp() throws Exception {
-	}
+    /**
+     * @throws java.lang.Exception
+     */
+    @BeforeEach
+    public void setUp() throws Exception {
+    }
 
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterEach
-	public void tearDown() throws Exception {
+    /**
+     * @throws java.lang.Exception
+     */
+    @AfterEach
+    public void tearDown() throws Exception {
 
-	}
+    }
 
-	/**
-	 * Test method for
-	 * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Horario#adicionaAula(pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula)}.
-	 */
-	@Test
-	public void testAdicionaAula() {
-		Aula aula = new Aula("Engenharia", "Inglês", "Manhã", "A1", 30, "Segunda", timeStart3, timeEnd1, date1,
-				"Sala 3", 50);
-		horario.adicionaAula(aula);
-		assertTrue(horario.getAulas().contains(aula));
-		horario.removeAula(aula);
-	}
+    /**
+     * Test method for
+     * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Horario#adicionaAula(pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Aula)}.
+     */
+    @Test
+    public void testAdicionaAula() {
+	Aula aula = new Aula("Engenharia", "Inglês", "Manhã", "A1", 30, "Segunda", timeStart3, timeEnd1, date1,
+		"Sala 3", 50);
+	horario.adicionaAula(aula);
+	assertTrue(horario.getAulas().contains(aula));
+	horario.removeAula(aula);
+    }
 
     /**
      * Test method for
@@ -247,23 +247,27 @@ public class HorarioTest {
 	assertEquals("UC1", hor.getAulas().get(0).getUC());
 	assertEquals("UC2", hor.getAulas().get(1).getUC());
 
-	}
+    }
 
+    /**
+     * Test method for
+     * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Horario#filtraPorMes(int)}.
+     */
+    @Test
+    public void testMostraTodasUCs() {
+	Horario hor = new Horario();
+	hor.adicionaAula(aula1);
+	hor.adicionaAula(aula2);
+	hor.adicionaAula(aula3);
+	List<String> ucsEsperadas = new ArrayList<>();
+	ucsEsperadas.add("UC1");
+	ucsEsperadas.add("UC2");
+	ucsEsperadas.add("UC3");
 
-	/**
-	 * Test method for
-	 * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Horario#filtraPorMes(int)}.
-	 */
-	@Test
-	public void testMostraTodasUCs() {
-		List<String> ucsEsperadas = new ArrayList<>();
-		//ucsEsperadas.add("UC1");
-		//ucsEsperadas.add("UC2");
-		//ucsEsperadas.add("UC3");
+	List<String> ucsObtidas = hor.listaUCs();
+	assertEquals(ucsEsperadas, ucsObtidas);
+    }
 
-		List<String> ucsObtidas = horario.listaUCs();
-		assertEquals(ucsEsperadas, ucsObtidas);
-	}
     /**
      * Test method for
      * {@link pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE.Horario#ordenaPorLotacao()}.

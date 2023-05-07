@@ -2,9 +2,11 @@
     -fx-background-color: pink;
 }
 
-.calendar-view .week-view .minha-classe-de-estilo,
-.calendar-view .day-view .minha-classe-de-estilo {
+.week-view .minha-classe-de-estilo{
     -fx-background-color: pink;
-    -fx-foreground-color: black;
-    -fx-font-size: 14px;
 }
+
+.day-view .minha-classe-de-estilo{
+    -fx-background-color: pink;
+}
+

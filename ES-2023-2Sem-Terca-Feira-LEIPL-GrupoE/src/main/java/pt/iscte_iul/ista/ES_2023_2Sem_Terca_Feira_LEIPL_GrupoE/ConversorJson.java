@@ -21,24 +21,27 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * @author Luis Rosa Classe que gere a conversão de ficheiros json
+ */
+
 public class ConversorJson {
 
-	private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
-			.registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).setPrettyPrinting().create();
+    private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter())
+	    .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).setPrettyPrinting().create();
 
-	/**
-	 * Método para gravar uma lista de objetos Aula em um arquivo JSON.
-	 *
-	 * @param aulas    Lista de objetos Aula a serem gravados no arquivo.
-	 * @param filePath Caminho do arquivo JSON onde os dados serão gravados.
-	 * @throws IOException Se ocorrer um erro durante a gravação do arquivo.
-	 */
-	public static void gravarEmArquivoJSON(List<Aula> aulas, String filePath) throws IOException {
-		try (Writer writer = new FileWriter(filePath)) {
-			gson.toJson(aulas, writer);
-		}
+    /**
+     * Método para gravar uma lista de objetos Aula em um arquivo JSON.
+     *
+     * @param aulas    Lista de objetos Aula a serem gravados no arquivo.
+     * @param filePath Caminho do arquivo JSON onde os dados serão gravados.
+     * @throws IOException Se ocorrer um erro durante a gravação do arquivo.
+     */
+    public static void gravarEmArquivoJSON(List<Aula> aulas, String filePath) throws IOException {
+	try (Writer writer = new FileWriter(filePath)) {
+	    gson.toJson(aulas, writer);
 	}
-
+    }
 
     /**
      * Método para carregar uma lista de objetos Aula a partir de um arquivo JSON.
