@@ -1,7 +1,6 @@
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -206,48 +205,51 @@ public class Horario {
     }
 
     /**
-     * Checks if two time intervals overlap.
+     * Retorna uma lista de aulas que estão em sobreposição de horário.
      *
-     * @param inicio1 The start time of the first interval.
-     * @param fim1    The end time of the first interval.
-     * @param inicio2 The start time of the second interval.
-     * @param fim2    The end time of the second interval.
-     * @return {@code true} if the intervals overlap, {@code false} otherwise.
-     */
-    private boolean isIntervaloCruzado(LocalTime inicio1, LocalTime fim1, LocalTime inicio2, LocalTime fim2) {
-	return inicio1.isBefore(fim2) && fim1.isAfter(inicio2);
-    }
-
-    /**
-     * Retrieves a list of classes that have overlapping schedules.
-     *
-     * @return A list of classes with overlapping schedules.
+     * @return List uma lista de aulas em sobreposição
      */
     public List<Aula> getAulasEmSobreposicao() {
 	List<Aula> aulasEmSobreposicao = new ArrayList<>();
+	int totalAulas = horario.size();
 
-	for (int i = 0; i < horario.size(); i++) {
+	for (int i = 0; i < totalAulas - 1; i++) {
 	    Aula aula1 = horario.get(i);
-	    for (int j = i + 1; j < horario.size(); j++) {
+
+	    for (int j = i + 1; j < totalAulas; j++) {
 		Aula aula2 = horario.get(j);
 
-		// Verificar se as aulas têm a mesma data
-		if (aula1.getData().equals(aula2.getData())) {
-		    // Verificar se os intervalos de tempo se cruzam
-		    if (isIntervaloCruzado(aula1.getHoraInicio(), aula1.getHoraFim(), aula2.getHoraInicio(),
-			    aula2.getHoraFim())) {
-			if (!aulasEmSobreposicao.contains(aula1)) {
-			    aulasEmSobreposicao.add(aula1);
-			}
-			if (!aulasEmSobreposicao.contains(aula2)) {
-			    aulasEmSobreposicao.add(aula2);
-			}
-		    }
+		if (aula1.getData().equals(aula2.getData()) && isIntervaloCruzado(aula1, aula2)) {
+		    addAulaToListIfNotPresent(aula1, aulasEmSobreposicao);
+		    addAulaToListIfNotPresent(aula2, aulasEmSobreposicao);
 		}
 	    }
 	}
 
 	return aulasEmSobreposicao;
+    }
+
+    /**
+     * Verifica se o intervalo de tempo de duas aulas está cruzado.
+     *
+     * @param aula1 a primeira aula
+     * @param aula2 a segunda aula
+     * @return true se os intervalos de tempo se cruzam, false caso contrário
+     */
+    private boolean isIntervaloCruzado(Aula aula1, Aula aula2) {
+	return aula1.getHoraInicio().isBefore(aula2.getHoraFim()) && aula2.getHoraInicio().isBefore(aula1.getHoraFim());
+    }
+
+    /**
+     * Adiciona uma aula à lista se ela não estiver presente.
+     *
+     * @param aula                a aula a ser adicionada
+     * @param aulasEmSobreposicao a lista de aulas em sobreposição
+     */
+    private void addAulaToListIfNotPresent(Aula aula, List<Aula> aulasEmSobreposicao) {
+	if (!aulasEmSobreposicao.contains(aula)) {
+	    aulasEmSobreposicao.add(aula);
+	}
     }
 
     /**

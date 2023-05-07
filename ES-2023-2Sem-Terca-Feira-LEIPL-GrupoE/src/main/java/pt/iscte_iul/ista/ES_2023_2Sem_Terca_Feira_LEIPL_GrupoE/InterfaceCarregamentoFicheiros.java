@@ -34,6 +34,7 @@ public class InterfaceCarregamentoFicheiros {
     static Ficheiro ficheiros = null;
     static Stage popup = null;
     static VBox root = null;
+    private static String ERROR = "Erro";
 
     /**
      * 
@@ -99,7 +100,7 @@ public class InterfaceCarregamentoFicheiros {
 		    adicionarHorarioAoCalendario(horario);
 		    closePopup();
 		} catch (Exception e) {
-		    Error.setError("Error", e.getMessage());
+		    Error.setError(ERROR, e.getMessage());
 		}
 	    });
 	});
@@ -135,7 +136,7 @@ public class InterfaceCarregamentoFicheiros {
 	    try {
 		actionButton(url);
 	    } catch (CsvException e) {
-		Error.setError("Error", e.getMessage());
+		Error.setError(ERROR, e.getMessage());
 	    }
 	});
 
@@ -196,7 +197,7 @@ public class InterfaceCarregamentoFicheiros {
 		line = br.readLine();
 	    }
 	} catch (Exception e) {
-	    Error.setError("Error", e.getMessage());
+	    Error.setError(ERROR, e.getMessage());
 	}
     }
 
