@@ -45,11 +45,11 @@ public class ICalToHorario {
      * @return Objeto Aula convertido
      */
     private static Aula convertEventToAula(VEvent event) {
-        String summary =  event.getProperty("SUMMARY").get().getValue();
-        String location = event.getProperty("LOCATION").get().getValue();
-        Instant dtStart = (Instant) event.getStartDate().get().getDate();
-        Instant dtEnd = (Instant) event.getEndDate().get().getDate();
-        String description = event.getProperty("DESCRIPTION").get().getValue();
+        String summary = event.getProperty("SUMMARY").isPresent() ? event.getProperty("SUMMARY").get().getValue() : "";
+        String location = event.getProperty("LOCATION").isPresent() ? event.getProperty("LOCATION").get().getValue() : "";
+        Instant dtStart = event.getStartDate().isPresent() ? (Instant) event.getStartDate().get().getDate() : null;
+        Instant dtEnd = event.getEndDate().isPresent() ? (Instant) event.getEndDate().get().getDate() : null;
+        String description = event.getProperty("DESCRIPTION").isPresent() ? event.getProperty("DESCRIPTION").get().getValue() : "";
 
 
         String uc = summary != null ? summary : "";
@@ -70,9 +70,9 @@ public class ICalToHorario {
         aula.setUC(uc);
         aula.setTurno(getTurnoFromDescription(description));
         aula.setDia(getDiaSemana(dataInicio));
-        aula.setData(dataInicio.toLocalDate());
-        aula.setHoraInicio(dataInicio.toLocalTime());
-        aula.setHoraFim(dataFim.toLocalTime());
+        aula.setData(dataInicio != null ? dataInicio.toLocalDate() : null);
+        aula.setHoraInicio(dataInicio != null ? dataInicio.toLocalTime() : null);
+        aula.setHoraFim(dataFim != null ? dataFim.toLocalTime() : null);
         aula.setSala(sala);
 
 
@@ -86,6 +86,9 @@ public class ICalToHorario {
      * @return String com a abreviação do dia da semana em português
      */
     private static String getDiaSemana(LocalDateTime data) {
+        if (data == null) {
+            return "";
+        }
         DayOfWeek dayOfWeek = data.getDayOfWeek();
         Map<DayOfWeek, String> dayOfWeekMap = new HashMap<>();
         dayOfWeekMap.put(DayOfWeek.MONDAY, "Seg");
