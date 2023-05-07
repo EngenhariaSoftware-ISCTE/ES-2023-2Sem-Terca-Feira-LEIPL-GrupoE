@@ -52,20 +52,19 @@ public class InterfaceCriarNovoHorario {
 	Button btnAdicionarUC = new Button("Adicionar UC");
 
 	btnAdicionarUC.setOnAction(event -> {
-
-	    List<String> aulasEscolhidas = new ArrayList<>();
-
-	    for (String item : selectedItems) {
-		aulasEscolhidas.add(item);
-	    }
-
-	    // Chamar o teu método aqui
-	    Horario horario = CriarNovoHorario.criarHorario(horarios, aulasEscolhidas);
-	    aulasEscolhidas = null;
-
-	    Calendario.getCalendar().clear();
-	    stage.close();
-	    Calendario.addHorarioAoCalendario(horario);
+        	    List<String> aulasEscolhidas = new ArrayList<>();
+        
+        	    for (String item : selectedItems) {
+        		aulasEscolhidas.add(item);
+        	    }
+        
+        	    // Chamar o teu método aqui
+        	    Horario horario = CriarNovoHorario.criarHorario(horarios, aulasEscolhidas);
+        	    aulasEscolhidas = null;
+        
+        	    Calendario.getCalendar().clear();
+        	    stage.close();
+        	    Calendario.addHorarioAoCalendario(horario);
 	});
 
 	// Cria uma VBox e adiciona o ListView e o botão a ela
@@ -79,7 +78,6 @@ public class InterfaceCriarNovoHorario {
 
 	// Cria a cena com o StackPane e define o tamanho
 	return new Scene(root, 200, 200);
-
     }
 
     /**
@@ -93,7 +91,7 @@ public class InterfaceCriarNovoHorario {
 	Scene scene = criarInterface();
 
 	// Define o título da janela e exibe
-	stage.setTitle("Dropdown com seleção múltipla e botão");
+	stage.setTitle("Escolhe as unidades curriculares:");
 	stage.setScene(scene);
 	stage.show();
     }
