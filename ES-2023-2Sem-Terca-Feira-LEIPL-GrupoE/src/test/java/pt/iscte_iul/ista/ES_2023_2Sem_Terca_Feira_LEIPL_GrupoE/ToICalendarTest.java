@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ToICalendarTest {
 
     @Test
-    void convertStringToICalendar() {
+    void testConvertStringToICalendar() {
         String iCalendarData = "BEGIN:VCALENDAR\r\n" +
                 "PRODID:-//ISCTE-IUL//fenix//EN\r\n" +
                 "VERSION:2.0\r\n" +

@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ICalToHorarioTest {
 
     @Test
-    public void ConvertCalendarToHorario() throws Exception {
+    public void testConvertCalendarToHorario() throws Exception {
         String icalString = "BEGIN:VCALENDAR\n" +
                 "BEGIN:VEVENT\n" +
                 "SUMMARY:Example Event\n" +
