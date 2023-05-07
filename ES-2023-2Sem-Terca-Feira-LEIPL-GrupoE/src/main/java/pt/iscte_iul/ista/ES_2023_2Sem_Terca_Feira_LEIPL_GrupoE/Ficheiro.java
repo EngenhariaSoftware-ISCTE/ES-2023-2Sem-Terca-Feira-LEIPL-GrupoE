@@ -127,8 +127,8 @@ public class Ficheiro {
 		    }
 
 		    Calendario.addHorarioAoCalendario(horario);
-		    
-		     Calendario.getCalendar();
+
+		    Calendario.getCalendar();
 		    stage.close();
 
 		} catch (Exception e) {

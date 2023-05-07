@@ -1,6 +1,7 @@
 package pt.iscte_iul.ista.ES_2023_2Sem_Terca_Feira_LEIPL_GrupoE;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -150,6 +151,7 @@ public class Horario {
      * 
      * @return lista de aulas em sobreposição
      */
+    /*
     public List<Aula> getAulasEmSobreposicao() {
 	List<Aula> aulasEmSobreposicao = new ArrayList<>();
 
@@ -169,7 +171,40 @@ public class Horario {
 	}
 
 	return aulasEmSobreposicao;
-    }
+    }*/
+    
+    private boolean isIntervaloCruzado(LocalTime inicio1, LocalTime fim1, LocalTime inicio2, LocalTime fim2) {
+	    return inicio1.isBefore(fim2) && fim1.isAfter(inicio2);
+	}
+    
+    public List<Aula> getAulasEmSobreposicao() {
+	    List<Aula> aulasEmSobreposicao = new ArrayList<>();
+
+	    for (int i = 0; i < horario.size(); i++) {
+	        Aula aula1 = horario.get(i);
+	        for (int j = i + 1; j < horario.size(); j++) {
+	            Aula aula2 = horario.get(j);
+	            
+	            // Verificar se as aulas têm a mesma data
+	            if (aula1.getData().equals(aula2.getData())) {
+	                // Verificar se os intervalos de tempo se cruzam
+	                if (isIntervaloCruzado(aula1.getHoraInicio(), aula1.getHoraFim(), aula2.getHoraInicio(), aula2.getHoraFim())) {
+	                    if (!aulasEmSobreposicao.contains(aula1)) {
+	                        aulasEmSobreposicao.add(aula1);
+	                    }
+	                    if (!aulasEmSobreposicao.contains(aula2)) {
+	                        aulasEmSobreposicao.add(aula2);
+	                    }
+	                }
+	            }
+	        }
+	    }
+
+	    return aulasEmSobreposicao;
+	}
+
+	
+
 
     /**
      * Retorna uma lista contendo todas as aulas que possuem lotação esgotada, ou
@@ -180,7 +215,7 @@ public class Horario {
     public List<Aula> getAulasComLotacaoEsgotada() {
 	List<Aula> aulasComLotacaoEsgotada = new ArrayList<>();
 	for (Aula aula : horario) {
-	    if (aula.getInscritos() == aula.getLotacao()) {
+	    if (aula.getInscritos() >= aula.getLotacao()) {
 		aulasComLotacaoEsgotada.add(aula);
 	    }
 	}

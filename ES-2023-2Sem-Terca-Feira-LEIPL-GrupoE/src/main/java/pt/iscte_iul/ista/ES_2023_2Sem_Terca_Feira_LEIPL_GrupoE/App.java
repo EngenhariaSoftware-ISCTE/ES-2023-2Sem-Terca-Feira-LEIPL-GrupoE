@@ -40,7 +40,7 @@ public class App extends Application {
 	root.setCenter(calendarView);
 
 	Scene scene = new Scene(root, 800, 600);
-	//scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+	scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 	primaryStage.setScene(scene);
 	primaryStage.setTitle("Calendar");
 	primaryStage.show();

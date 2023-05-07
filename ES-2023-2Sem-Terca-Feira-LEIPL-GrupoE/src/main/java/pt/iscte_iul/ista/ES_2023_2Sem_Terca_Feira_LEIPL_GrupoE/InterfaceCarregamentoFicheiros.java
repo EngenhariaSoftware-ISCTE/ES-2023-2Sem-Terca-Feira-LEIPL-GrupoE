@@ -199,11 +199,10 @@ public class InterfaceCarregamentoFicheiros {
 	Horario horario = new Horario();
 	if (path.endsWith("json")) {
 	    List<Aula> aulas = ConversorJson.carregarDeArquivoJSON(path);
-	    aulas.forEach(a -> horario.adicionaAula(a));
+	    aulas.forEach(horario::adicionaAula);
 	} else if (path.endsWith("csv")) {
 	    Horario horarios = ConversorCSV.lerCSVParaEstrutura(path);
 	    horarios.getAulas().forEach(horario::adicionaAula);
-
 	}
 	return horario;
     }
