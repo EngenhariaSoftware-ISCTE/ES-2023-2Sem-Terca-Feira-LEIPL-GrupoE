@@ -11,16 +11,22 @@ import org.junit.jupiter.api.Test;
 import com.calendarfx.model.Entry;
 
 /**
- * @author Tatiana
- *
+ * @author Tatiana Clim Classe de teste para a classe Calendario. Contém testes
+ *         para os métodos relacionados à adição de horários ao calendário.
+ *         Autor: Tatiana
  */
 public class CalendarioTest {
 
+    /**
+     * Testa o método addHorarioAoCalendario. Verifica se as entradas do horário são
+     * adicionadas corretamente ao calendário.
+     */
     @Test
     public void testAddHorarioAoCalendario() {
 	Horario horario = new Horario();
 	Calendario.getCalendar().clear();
-	// Cria um objeto Horario com duas aulas
+
+	// Cria um objeto Horario com uma aula
 	Aula aula1 = new Aula("ME", "Teoria dos Jogos e dos Contratos", "01789TP01", "MEA1", 30, "Sex",
 		LocalTime.parse("13:00:00", DateTimeFormatter.ofPattern("HH:mm:ss")),
 		LocalTime.parse("14:30:00", DateTimeFormatter.ofPattern("HH:mm:ss")),
@@ -33,15 +39,18 @@ public class CalendarioTest {
 
 	// Verifica se as entradas foram adicionadas corretamente
 	List<Entry<?>> entries = Calendario.getCalendar().findEntries(aula1.displayEntry());
-	System.out.println(horario.getAulas().size());
-	System.out.println(entries.size());
 	Assertions.assertEquals(horario.getAulas().size(), entries.size());
 	horario = null;
     }
 
+    /**
+     * Testa o método getCalendar. Verifica se o objeto Calendar é corretamente
+     * retornado.
+     */
     @Test
     public void testGetCalendar() {
 	Calendario.getCalendar().clear();
+
 	Aula aula2 = new Aula("ME", "Teoria dos Jogos e dos Contratos", "01789TP01", "MEA1", 30, "Sex",
 		LocalTime.parse("14:30:00", DateTimeFormatter.ofPattern("HH:mm:ss")),
 		LocalTime.parse("17:00:00", DateTimeFormatter.ofPattern("HH:mm:ss")),

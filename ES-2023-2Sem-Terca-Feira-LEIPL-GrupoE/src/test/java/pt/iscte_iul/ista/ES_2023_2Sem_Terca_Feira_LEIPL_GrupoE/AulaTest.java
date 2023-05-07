@@ -87,8 +87,6 @@ public class AulaTest {
      */
     @Test
     public void testGetCurso() {
-	System.out.println("getCurso");
-	System.out.println(aula.getCurso());
 	assertEquals("Engenharia", aula.getCurso());
     }
 

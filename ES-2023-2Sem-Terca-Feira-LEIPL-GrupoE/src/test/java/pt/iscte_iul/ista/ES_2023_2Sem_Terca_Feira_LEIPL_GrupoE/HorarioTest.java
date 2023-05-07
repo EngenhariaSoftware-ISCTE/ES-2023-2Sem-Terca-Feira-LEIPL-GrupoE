@@ -265,8 +265,6 @@ public class HorarioTest {
 	ucsEsperadas.add("UC3");
 
 	List<String> ucsObtidas = hor.listaUCs();
-	System.out.println(ucsEsperadas);
-	System.out.println(ucsObtidas);
 	assertEquals(ucsEsperadas, ucsObtidas);
     }
 

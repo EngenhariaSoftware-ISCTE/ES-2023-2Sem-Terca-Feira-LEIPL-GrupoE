@@ -11,8 +11,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
- * @autor Tatiana Clim Classe responsável por gerir o carregamento e a
- *        exportação de arquivos CSV e JSON.
+ * @author Tatiana Clim Classe responsável por gerir o carregamento e a
+ *         exportação de arquivos CSV e JSON.
  */
 public class Ficheiro {
 

@@ -6,7 +6,8 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * Classe LeitorHorarioHTTP que lê o conteúdo de um URL do tipo "webcal".
+ * @author Luis Rosa Classe LeitorHorarioHTTP que lê o conteúdo de um URL do
+ *         tipo "webcal".
  */
 public class LeitorHorarioHTTP {
 

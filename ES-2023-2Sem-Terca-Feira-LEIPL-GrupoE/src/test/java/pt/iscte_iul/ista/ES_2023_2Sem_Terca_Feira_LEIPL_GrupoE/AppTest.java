@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class AppTest {
     /**
-     * Rigorous Test :-)
+     * @author Tatiana Clim
      */
     @Test
     public void testApp() {

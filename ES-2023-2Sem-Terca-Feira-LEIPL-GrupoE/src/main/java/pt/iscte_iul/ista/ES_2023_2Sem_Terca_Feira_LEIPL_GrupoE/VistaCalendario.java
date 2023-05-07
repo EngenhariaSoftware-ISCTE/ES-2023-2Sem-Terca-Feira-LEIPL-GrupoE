@@ -11,9 +11,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
- * @autor Tatiana Clim Classe responsável por criar a vista do calendário, onde
- *        é possível visualizar as aulas agendadas. Utiliza a biblioteca
- *        CalendarFX para gerar o calendário e os seus componentes.
+ * @author Tatiana Clim Classe responsável por criar a vista do calendário, onde
+ *         é possível visualizar as aulas agendadas. Utiliza a biblioteca
+ *         CalendarFX para gerar o calendário e os seus componentes.
  */
 
 public class VistaCalendario {

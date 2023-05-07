@@ -1,0 +1,54 @@
+[
+  {
+    "uc": "Teoria dos Jogos e dos Contratos",
+    "curso": "ME",
+    "turno": "01789TP01",
+    "turma": "MEA1",
+    "inscritos": 34,
+    "dia": "Sex",
+    "horaInicio": "14:30:00",
+    "horaFim": "16:00:00",
+    "data": "05/05/2023",
+    "sala": "AA2.25",
+    "lotacao": 34
+  },
+  {
+    "uc": "Engenharia de Software",
+    "curso": "ME",
+    "turno": "01789TP01",
+    "turma": "MEA1",
+    "inscritos": 30,
+    "dia": "Sex",
+    "horaInicio": "08:00:00",
+    "horaFim": "10:30:00",
+    "data": "03/05/2023",
+    "sala": "AA2.25",
+    "lotacao": 34
+  },
+  {
+    "uc": "Análise Matemática",
+    "curso": "ME",
+    "turno": "01789TP01",
+    "turma": "MEA1",
+    "inscritos": 30,
+    "dia": "Sex",
+    "horaInicio": "12:30:00",
+    "horaFim": "14:30:00",
+    "data": "02/05/2023",
+    "sala": "AA2.25",
+    "lotacao": 34
+  },
+{
+    "uc": "Cálculo",
+    "curso": "ME",
+    "turno": "01789TP01",
+    "turma": "MEA1",
+    "inscritos": 30,
+    "dia": "Sex",
+    "horaInicio": "12:30:00",
+    "horaFim": "14:30:00",
+    "data": "02/05/2023",
+    "sala": "AA2.25",
+    "lotacao": 34
+  }
+]

@@ -14,8 +14,8 @@ import net.fortuna.ical4j.model.Component;
 import net.fortuna.ical4j.model.component.VEvent;
 
 /**
- * Classe ICalToHorario que converte um objeto Calendar (ical4j) em um objeto
- * Horario.
+ * @author Luis Rosa Classe ICalToHorario que converte um objeto Calendar
+ *         (ical4j) em um objeto Horario.
  */
 public class ICalToHorario {
 

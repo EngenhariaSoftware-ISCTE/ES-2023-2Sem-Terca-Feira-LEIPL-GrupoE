@@ -21,6 +21,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * @author Luis Rosa Classe que gere a conversão de ficheiros json
+ */
+
 public class ConversorJson {
 
     private static final Gson gson = new GsonBuilder().registerTypeAdapter(LocalDate.class, new LocalDateAdapter())

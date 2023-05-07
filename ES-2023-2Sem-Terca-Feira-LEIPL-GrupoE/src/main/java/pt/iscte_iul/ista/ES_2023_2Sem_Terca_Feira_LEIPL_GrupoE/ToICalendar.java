@@ -6,8 +6,8 @@ import net.fortuna.ical4j.data.CalendarBuilder;
 import net.fortuna.ical4j.model.Calendar;
 
 /**
- * Classe ToICalendar responsável por converter uma String em um objeto Calendar
- * (ical4j).
+ * @author Luis Rosa Classe ToICalendar responsável por converter uma String em
+ *         um objeto Calendar (ical4j).
  */
 public class ToICalendar {
     /**

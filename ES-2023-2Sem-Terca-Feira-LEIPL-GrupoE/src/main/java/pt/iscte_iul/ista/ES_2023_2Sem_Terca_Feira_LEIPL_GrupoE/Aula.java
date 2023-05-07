@@ -4,24 +4,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 /**
- * @autor Luis Viriato
- * Classe Aula - Gera um objetos Aula
- * Contém métodos getters e setters para todos os parâmetros
+ * @author Luis Viriato Classe Aula - Gera um objetos Aula Contém métodos
+ *         getters e setters para todos os parâmetros
  * 
- * */
+ */
 
-/**
- * @author LMV
- *
- */
-/**
- * @author LMV
- *
- */
-/**
- * @author LMV
- *
- */
 public class Aula {
     private String uc;
     private String curso;
@@ -46,7 +33,7 @@ public class Aula {
      * @param curso      - curso a que pertence a uc
      * @param uc         - Unidade curricular
      * @param turno      - Turno a que pertence a uc
-     * @param turma-     Turma a que pertence a uc.
+     * @param turma      - Turma a que pertence a uc.
      * @param inscritos  - Numero de inscritos na uc
      * @param dia        - Dia da semana
      * @param horaInicio - hora inicio da aula
@@ -196,12 +183,16 @@ public class Aula {
     /**
      * @Override
      */
+    @Override
     public String toString() {
 	return "Aula [uc=" + uc + ", curso=" + curso + ", turno=" + turno + ", turma=" + turma + ", inscritos="
 		+ inscritos + ", dia=" + dia + ", horaInicio=" + horaInicio + ", horaFim=" + horaFim + ", data=" + data
 		+ ", sala=" + sala + ", lotacao=" + lotacao + "]";
     }
 
+    /**
+     * @return a string with the fields from aula.
+     */
     public String displayEntry() {
 	return uc + ",\n Curso=" + curso + ",\n Turno=" + turno + ",\n Turma=" + turma + ",\n Inscritos=" + inscritos
 		+ ",\n Sala=" + sala + ",\n Lotacao=" + lotacao;

@@ -14,12 +14,21 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * @author Vitor Teixeira Classe responsável por criar a interface para a
+ *         criação de um novo horário.
+ */
 public class InterfaceCriarNovoHorario {
 
     static Horario horarios = null;
 
     static Stage stage = new Stage();
 
+    /**
+     * Cria a cena da interface para criar um novo horário.
+     *
+     * @return a cena criada
+     */
     public static Scene criarInterface() {
 
 	List<String> listaUCs = horarios.listaUCs();
@@ -70,6 +79,11 @@ public class InterfaceCriarNovoHorario {
 
     }
 
+    /**
+     * Mostra a interface para criar um novo horário.
+     *
+     * @param horario o horário existente
+     */
     public static void mostrarInterface(Horario horario) {
 	horarios = horario;
 
@@ -80,5 +94,4 @@ public class InterfaceCriarNovoHorario {
 	stage.setScene(scene);
 	stage.show();
     }
-
 }
