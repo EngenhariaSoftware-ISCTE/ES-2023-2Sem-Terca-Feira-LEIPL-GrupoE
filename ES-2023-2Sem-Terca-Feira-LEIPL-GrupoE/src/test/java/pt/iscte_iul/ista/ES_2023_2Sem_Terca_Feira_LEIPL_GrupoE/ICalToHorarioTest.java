@@ -36,8 +36,8 @@ public class ICalToHorarioTest {
 	LocalDate portugalDate = LocalDate.of(2023, 4, 30).atStartOfDay(portugalZone).toLocalDate();
 
 	// Convert LocalTime to Portugal timezone
-	LocalTime portugalStartTime = LocalTime.of(10, 0).atDate(portugalDate).atZone(portugalZone).toLocalTime();
-	LocalTime portugalEndTime = LocalTime.of(11, 0).atDate(portugalDate).atZone(portugalZone).toLocalTime();
+	LocalTime portugalStartTime = LocalTime.of(9, 0).atDate(portugalDate).atZone(portugalZone).toLocalTime();
+	LocalTime portugalEndTime = LocalTime.of(10, 0).atDate(portugalDate).atZone(portugalZone).toLocalTime();
 
 	assertEquals("Example Event", aula.getUC());
 	assertEquals("C5.08, 5, Edifício II (ISCTE-IUL), ISCTE-IUL", aula.getSala());
