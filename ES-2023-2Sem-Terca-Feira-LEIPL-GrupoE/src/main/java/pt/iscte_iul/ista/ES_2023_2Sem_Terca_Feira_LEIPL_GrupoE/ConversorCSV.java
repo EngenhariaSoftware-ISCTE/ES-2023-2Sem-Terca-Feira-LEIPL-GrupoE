@@ -102,9 +102,8 @@ public class ConversorCSV {
 	for (int i = 0; i < h.getAulas().size(); i++) {
 
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	    String lotacao = "";
-	    if (h.getAulas().get(i).getLotacao() != 0)
-		lotacao = Integer.toString(h.getAulas().get(i).getLotacao());
+	    String lotacao = h.getAulas().get(i).getLotacao() != 0 ? Integer.toString(h.getAulas().get(i).getLotacao())
+		    : "";
 
 	    String[] a = { h.getAulas().get(i).getCurso(), h.getAulas().get(i).getUC(), h.getAulas().get(i).getTurno(),
 		    h.getAulas().get(i).getTurma(), Integer.toString(h.getAulas().get(i).getInscritos()),
