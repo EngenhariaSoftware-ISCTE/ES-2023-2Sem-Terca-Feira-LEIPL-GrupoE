@@ -32,15 +32,16 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws ParseException, IOException, CsvException {
 	BorderPane root = new BorderPane();
+	Calendario calendar = new Calendario();
 
 	// Cria um calendário
-	CalendarView calendarView = VistaCalendario.createCalendarView(new Calendario(), primaryStage);
+	CalendarView calendarView = VistaCalendario.createCalendarView(calendar, primaryStage);
 
 	root.setCenter(calendarView);
 
 	Scene scene = new Scene(root, 800, 600);
+	//scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 	primaryStage.setScene(scene);
-	scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 	primaryStage.setTitle("Calendar");
 	primaryStage.show();
     }

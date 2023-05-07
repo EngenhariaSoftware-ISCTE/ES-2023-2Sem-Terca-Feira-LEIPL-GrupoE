@@ -1,5 +1,6 @@
 .minha-classe-de-estilo {
     -fx-background-color: pink;
+    -fx-foreground-color: black;
 }
 
 .calendar-view .week-view .minha-classe-de-estilo,

@@ -12,7 +12,7 @@ import com.calendarfx.model.Entry;
  */
 
 public class Calendario {
-	public static Calendar<Aula> calendario = new Calendar<>("Calendar");
+    private static Calendar<Aula> calendar = new Calendar<>("Calendar");
 
     /**
      * Adiciona as aulas contidas em um objeto Horario ao calendário.
@@ -21,9 +21,10 @@ public class Calendario {
      *                adicionadas ao calendário
      */
     public static void addHorarioAoCalendario(Horario horario) {
+	System.out.println(horario.toString());
 	for (Aula aula : horario.getAulas()) {
 
-	    Entry<Aula> entry = new Entry<>(aula.displayEntry());
+	    Entry<Aula> entry = new Entry<>(aula.getUC());
 	    entry.setUserObject(aula);
 	    entry.changeStartDate(aula.getData());
 	    entry.changeEndDate(aula.getData());
@@ -35,16 +36,16 @@ public class Calendario {
 		    || !aulasSobrelotadas.isEmpty() && aulasSobrelotadas.contains(aula)) {
 		entry.getStyleClass().add("minha-classe-de-estilo");
 	    }
-	    calendario.addEntry(entry);
+	    calendar.addEntry(entry);
 	}
     }
 
-	/**
-	 * Retorna o calendário de aulas.
-	 * 
-	 * @return objeto Calendar<Aula> contendo as aulas adicionadas ao calendário
-	 */
-	public static Calendar<Aula> getCalendar() {
-		return calendario;
-	}
+    /**
+     * Retorna o calendário de aulas.
+     * 
+     * @return objeto Calendar<Aula> contendo as aulas adicionadas ao calendário
+     */
+    public static Calendar<Aula> getCalendar() {
+	return calendar;
+    }
 }
