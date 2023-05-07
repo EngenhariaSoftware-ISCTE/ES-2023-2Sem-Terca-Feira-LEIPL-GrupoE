@@ -15,10 +15,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * @author Tatiana Clim Classe principal do projeto que inicializa a interface
- *         gráfica do usuário.
+ * Classe principal do projeto que inicializa a interface gráfica do usuário.
+ * 
+ * @author Tatiana Clim
  */
-
 public class App extends Application {
 
     /**
@@ -27,10 +27,10 @@ public class App extends Application {
      * @param primaryStage o palco primário da aplicação
      * @throws ParseException se ocorrer um erro de análise ao iniciar a interface
      *                        gráfica
-     * @throws IOException    Se não encontrar o ficheiro
-     * @throws CsvException   Se não conseguir abrir o csv
+     * @throws IOException    se ocorrer um erro de I/O ao iniciar a interface
+     *                        gráfica
+     * @throws CsvException   se ocorrer um erro ao manipular o arquivo CSV
      */
-
     @Override
     public void start(Stage primaryStage) throws ParseException, IOException, CsvException {
 	BorderPane root = new BorderPane();

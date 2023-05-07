@@ -8,88 +8,128 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * @author Luis Viriato Gera um horário que é uma lista de objetos Aula. Possui
- *         métodos para adicionar e remover obj Aula. Possui métodos para
- *         ordenar o Horário com base nos diversos argumentos da classe Aula
- *         Possui métodos para filtrar Auila por dia, mês e ano. Possui ainda um
- *         getter do horário.
+ * Classe Horario representa um horário que é uma lista de objetos Aula. Possui
+ * métodos para adicionar e remover objetos Aula, ordenar o horário com base em
+ * diferentes critérios da classe Aula, filtrar aulas por dia, mês e ano, e
+ * fornecer acesso às aulas do horário.
  * 
+ * @author Luis
  */
-
 public class Horario {
 
     private List<Aula> horario;
 
+    /**
+     * Construtor da classe Horario.
+     */
     public Horario() {
 	this.horario = new ArrayList<>();
     }
 
-    // Adiciona uma aula ao horário
+    /**
+     * Adiciona uma aula ao horário.
+     * 
+     * @param aula a aula a ser adicionada
+     */
     public void adicionaAula(Aula aula) {
 	this.horario.add(aula);
     }
 
-    // Remove uma aula do horário
+    /**
+     * Remove uma aula do horário.
+     * 
+     * @param aula a aula a ser removida
+     */
     public void removeAula(Aula aula) {
 	this.horario.remove(aula);
     }
 
-    // Ordena aulas por uc
+    // Métodos para ordenar o horário com base em diferentes critérios da classe
+    // Aula
+
+    /**
+     * Ordena as aulas do horário por Unidade Curricular (UC).
+     */
     public void ordenaPorUC() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getUC));
     }
 
-    // Ordena aulas por curso
+    /**
+     * Ordena as aulas do horário por Curso.
+     */
     public void ordenaPorCurso() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getCurso));
     }
 
-    // Ordena aulas por turno
+    /**
+     * Ordena as aulas do horário por Turno.
+     */
     public void ordenaPorTurno() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getTurno));
     }
 
-    // Ordena aulas por turma
+    /**
+     * Ordena as aulas do horário por Turma.
+     */
     public void ordenaPorTurma() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getTurma));
     }
 
-    // Ordena aulas por número de inscritos
+    /**
+     * Ordena as aulas do horário por número de inscritos.
+     */
     public void ordenaPorInscritos() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getInscritos));
     }
 
-    // Ordena aulas por dia
+    /**
+     * Ordena as aulas do horário por dia.
+     */
     public void ordenaPorDia() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getDia));
     }
 
-    // Ordena aulas por hora de início
+    /**
+     * Ordena as aulas do horário por hora de início.
+     */
     public void ordenaPorHoraInicio() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getHoraInicio));
     }
 
-    // Ordena aulas por hora de fim
+    /**
+     * Ordena as aulas do horário por hora de fim.
+     */
     public void ordenaPorHoraFim() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getHoraFim));
     }
 
-    // Ordena aulas por data
+    /**
+     * Ordena as aulas do horário por data.
+     */
     public void ordenaPorData() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getData));
     }
 
-    // Ordena aulas por sala
+    /**
+     * Ordena as aulas por sala.
+     */
     public void ordenaPorSala() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getSala));
     }
 
-    // Ordena aulas por lotação
+    /**
+     * Ordena as aulas por lotação.
+     */
     public void ordenaPorLotacao() {
 	Collections.sort(this.horario, Comparator.comparing(Aula::getLotacao));
     }
 
-    // Filtra as aulas por um dia específico
+    /**
+     * Filtra as aulas por um dia específico.
+     *
+     * @param dia O dia que serve como filtro.
+     * @return Uma lista de aulas filtradas por dia.
+     */
     public List<Aula> filtraPorDia(LocalDate dia) {
 	List<Aula> aulasDoDia = new ArrayList<>();
 	for (Aula aula : this.horario) {
@@ -100,7 +140,13 @@ public class Horario {
 	return aulasDoDia;
     }
 
-    // Filtra as aulas por uma semana específica
+    /**
+     * Filtra as aulas por uma semana específica.
+     *
+     * @param inicioSemana O dia que inicia a semana.
+     * @param fimSemana    O dia do fim de semana.
+     * @return Uma lista de aulas filtradas por semana.
+     */
     public List<Aula> filtraPorSemana(LocalDate inicioSemana, LocalDate fimSemana) {
 	List<Aula> aulasDaSemana = new ArrayList<>();
 	for (Aula aula : this.horario) {
@@ -111,7 +157,12 @@ public class Horario {
 	return aulasDaSemana;
     }
 
-    // Filtra as aulas por um mês específico
+    /**
+     * Filtra as aulas por um mês específico.
+     *
+     * @param mes O mês que filtra as aulas.
+     * @return Uma lista de aulas filtradas por mês.
+     */
     public List<Aula> filtraPorMes(int mes) {
 	List<Aula> aulasDoMes = new ArrayList<>();
 	for (Aula aula : this.horario) {
@@ -122,18 +173,27 @@ public class Horario {
 	return aulasDoMes;
     }
 
-    // Retorna todas as aulas do horário
+    /**
+     * Retorna todas as aulas do horário.
+     *
+     * @return Uma lista de todas as aulas do horário.
+     */
     public List<Aula> getAulas() {
 	return this.horario;
     }
 
+    /*
+     * Método que reescreve o toString
+     */
     @Override
     public String toString() {
 	return "Horario [horario=" + horario + "]";
     }
 
     /**
-     * @return lista com as UCs do horário. feature 4.1 do projeto
+     * Método que retorna as ucs do horário. feature 4.1 do projeto
+     * 
+     * @return List com as UCs do horário.
      */
     public List<String> listaUCs() {
 	List<String> ucs = new ArrayList<>();

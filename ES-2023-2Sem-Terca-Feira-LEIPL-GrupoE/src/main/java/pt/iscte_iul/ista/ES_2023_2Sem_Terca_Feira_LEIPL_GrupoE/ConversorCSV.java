@@ -16,19 +16,24 @@ import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvException;
 
 /**
+ * Classe ConversorCSV - Lê um ficheiro CSV para um objeto Horário e escreve
+ * para um ficheiro CSV a partir de um objeto Horário.
  * 
- * @author Vítor Hugo Ferreira Teixeira Classe Conversor CSV - Lê um ficheiro
- *         CSV para um objeto Horário e escreve para um ficheiro CSV a partir de
- *         um objeto Horário
+ * ConversorCSV Class - Reads a CSV file into a Horário object and writes to a
+ * CSV file from a Horário object.
+ * 
+ * @author Vítor
  */
-
 public class ConversorCSV {
+
     /**
-     * Método para ler ficheiro CVS e colocar na estrutura/objeto Horário
+     * Método para ler um ficheiro CSV e colocar na estrutura/objeto Horário.
      * 
-     * @param locationCSVFile
-     * @return
-     * @throws CsvException
+     * Reads a CSV file and populates the Horário structure/object.
+     * 
+     * @param locationCSVFile localização do ficheiro CSV
+     * @return um objeto Horário preenchido com os dados do ficheiro CSV
+     * @throws CsvException se ocorrer um erro ao ler o ficheiro CSV
      */
     public static Horario lerCSVParaEstrutura(String locationCSVFile) throws CsvException {
 	try (CSVReader reader = new CSVReader(
@@ -79,11 +84,12 @@ public class ConversorCSV {
     }
 
     /**
-     * Método para escrever a partir de uma estrutura/objeto Horário para um
-     * ficheiro CSV
+     * Método para escrever a partir de um objeto Horário para um ficheiro CSV.
      * 
-     * @param h
-     * @param fileName
+     * Writes from a Horário object to a CSV file.
+     * 
+     * @param h        objeto Horário contendo os dados a serem escritos
+     * @param fileName nome do ficheiro CSV a ser criado
      */
     public static void escreveCSV(Horario h, String fileName) {
 

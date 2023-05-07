@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.io.StringReader;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
 
 import org.junit.jupiter.api.Test;
 
@@ -28,12 +29,24 @@ public class ICalToHorarioTest {
 
 	Aula aula = horario.getAulas().get(0);
 
+	// Set Portugal timezone
+	ZoneId portugalZone = ZoneId.of("Europe/Lisbon");
+
+	// Convert LocalDate to Portugal timezone
+	LocalDate portugalDate = LocalDate.of(2023, 4, 30).atStartOfDay(portugalZone).toLocalDate();
+
+	// Convert LocalTime to Portugal timezone
+	LocalTime portugalStartTime = LocalTime.of(10, 0).atDate(portugalDate).atZone(portugalZone).toLocalTime();
+	LocalTime portugalEndTime = LocalTime.of(11, 0).atDate(portugalDate).atZone(portugalZone).toLocalTime();
+
 	assertEquals("Example Event", aula.getUC());
 	assertEquals("C5.08, 5, Edifício II (ISCTE-IUL), ISCTE-IUL", aula.getSala());
 	assertEquals("L5316TP03", aula.getTurno());
-	assertEquals(LocalDate.of(2023, 4, 30), aula.getData());
-	assertEquals(LocalTime.of(10, 0), aula.getHoraInicio());
-	assertEquals(LocalTime.of(11, 0), aula.getHoraFim());
+
+	assertEquals(portugalDate, aula.getData());
+	assertEquals(portugalStartTime, aula.getHoraInicio());
+	assertEquals(portugalEndTime, aula.getHoraFim());
+
 	assertEquals("Dom", aula.getDia());
     }
 }

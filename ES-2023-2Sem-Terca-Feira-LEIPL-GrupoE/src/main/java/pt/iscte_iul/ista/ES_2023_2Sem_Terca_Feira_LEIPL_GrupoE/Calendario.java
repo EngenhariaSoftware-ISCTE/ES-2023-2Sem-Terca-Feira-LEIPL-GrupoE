@@ -66,7 +66,7 @@ public class Calendario {
     /**
      * Retorna o calendário de aulas.
      * 
-     * @return objeto Calendar<Aula> contendo as aulas adicionadas ao calendário
+     * @return objeto Calendar contendo as aulas adicionadas ao calendário
      */
     public static Calendar<Aula> getCalendar() {
 	return calendar;

@@ -69,8 +69,14 @@ public class Ficheiro {
 	fileChooser.getExtensionFilters().addAll(extFilterCSV, extFilterJSON);
     }
 
-    public void setStage(Stage s) {
-	this.stage = s;
+    /**
+     * Método que atribui um stage
+     * 
+     * @param stage stage a atribuir
+     */
+
+    public void setStage(Stage stage) {
+	this.stage = stage;
     }
 
     /**
@@ -139,10 +145,20 @@ public class Ficheiro {
 	}
     }
 
+    /**
+     * Método que devolve Calendario
+     * 
+     * @return Calendario
+     */
     public Calendario getInterfaceHorario() {
 	return interfaceHorario;
     }
 
+    /**
+     * Método que devolve horário
+     * 
+     * @return Horario
+     */
     public Horario getHorario() {
 	return horario;
     }

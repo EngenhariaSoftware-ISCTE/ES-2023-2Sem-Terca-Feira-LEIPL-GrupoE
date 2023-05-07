@@ -66,6 +66,11 @@ public class Aula {
 	return curso;
     }
 
+    /**
+     * Define o curso
+     *
+     * @param curso curso a ser definido
+     */
     public void setCurso(String curso) {
 	this.curso = curso;
     }
@@ -77,6 +82,11 @@ public class Aula {
 	return uc;
     }
 
+    /**
+     * Define a unidade curricular.
+     *
+     * @param uc a unidade curricular a ser definida
+     */
     public void setUC(String uc) {
 	this.uc = uc;
     }
@@ -88,6 +98,11 @@ public class Aula {
 	return turno;
     }
 
+    /**
+     * Define o turno
+     *
+     * @param turno turno a ser definido
+     */
     public void setTurno(String turno) {
 	this.turno = turno;
     }
@@ -99,6 +114,11 @@ public class Aula {
 	return turma;
     }
 
+    /**
+     * Define a turma
+     *
+     * @param turma turma a ser definida
+     */
     public void setTurma(String turma) {
 	this.turma = turma;
     }
@@ -110,6 +130,11 @@ public class Aula {
 	return inscritos;
     }
 
+    /**
+     * Define o número de inscritos
+     *
+     * @param inscritos o número de inscritos a ser definido
+     */
     public void setInscritos(int inscritos) {
 	this.inscritos = inscritos;
     }
@@ -121,6 +146,11 @@ public class Aula {
 	return dia;
     }
 
+    /**
+     * Define o dia
+     *
+     * @param dia dia a ser definido
+     */
     public void setDia(String dia) {
 	this.dia = dia;
     }
@@ -132,6 +162,11 @@ public class Aula {
 	return horaInicio;
     }
 
+    /**
+     * Define a hora de inicio
+     *
+     * @param hora_inicio a hora de inicio a ser definida
+     */
     public void setHoraInicio(LocalTime hora_inicio) {
 	this.horaInicio = hora_inicio;
     }
@@ -143,6 +178,11 @@ public class Aula {
 	return horaFim;
     }
 
+    /**
+     * Define a hora de fim
+     *
+     * @param hora_fim a hora de fim a ser definida
+     */
     public void setHoraFim(LocalTime hora_fim) {
 	this.horaFim = hora_fim;
     }
@@ -154,6 +194,11 @@ public class Aula {
 	return data;
     }
 
+    /**
+     * Define a data
+     *
+     * @param data data a ser definida
+     */
     public void setData(LocalDate data) {
 	this.data = data;
     }
@@ -165,6 +210,11 @@ public class Aula {
 	return sala;
     }
 
+    /**
+     * Define a sala
+     *
+     * @param sala sala a ser definida
+     */
     public void setSala(String sala) {
 	this.sala = sala;
     }
@@ -176,12 +226,17 @@ public class Aula {
 	return lotacao;
     }
 
+    /**
+     * Define a lotação
+     *
+     * @param lotacao lotação a ser definida
+     */
     public void setLotacao(int lotacao) {
 	this.lotacao = lotacao;
     }
 
     /**
-     * @Override
+     * @return Reescreve o método toString
      */
     @Override
     public String toString() {
