@@ -39,13 +39,18 @@ public class VistaCalendario {
 	Ficheiro ficheiro = new Ficheiro(stage, interfaceHorario, new Horario());
 
 	// Obtém as referências aos botões
-	// Button loadButton = ficheiro.getLoadButton();
 	Button loadButton = new Button("Carregar Ficheiro");
 	Button exportButton = ficheiro.getExportButton();
 
 	// Novo botão para criar novo horário criado pelo(a) aluno(a)
 	Button criarNovoHorario = new Button("Criar Horário");
-	criarNovoHorario.setOnAction(event -> InterfaceCriarNovoHorario.mostrarInterface(ficheiro.getHorario()));
+	criarNovoHorario.setOnAction(event ->{ 
+	    if(ficheiro.getHorario().getAulas().isEmpty()) {
+		Error.setError("Erro", "Tem de carregar um ficheiro primeiro!");
+	    }else {
+		 InterfaceCriarNovoHorario.mostrarInterface(ficheiro.getHorario());
+	    }
+	});
 
 	ToolBar customToolbar = new ToolBar(loadButton, exportButton, criarNovoHorario);
 
