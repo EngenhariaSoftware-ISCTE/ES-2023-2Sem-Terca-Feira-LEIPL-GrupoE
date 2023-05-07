@@ -44,11 +44,11 @@ public class VistaCalendario {
 
 	// Novo botão para criar novo horário criado pelo(a) aluno(a)
 	Button criarNovoHorario = new Button("Criar Horário");
-	criarNovoHorario.setOnAction(event ->{ 
-	    if(ficheiro.getHorario().getAulas().isEmpty()) {
+	criarNovoHorario.setOnAction(event -> {
+	    if (ficheiro.getHorario().getAulas().isEmpty()) {
 		Error.setError("Erro", "Tem de carregar um ficheiro primeiro!");
-	    }else {
-		 InterfaceCriarNovoHorario.mostrarInterface(ficheiro.getHorario());
+	    } else {
+		InterfaceCriarNovoHorario.mostrarInterface(ficheiro.getHorario());
 	    }
 	});
 

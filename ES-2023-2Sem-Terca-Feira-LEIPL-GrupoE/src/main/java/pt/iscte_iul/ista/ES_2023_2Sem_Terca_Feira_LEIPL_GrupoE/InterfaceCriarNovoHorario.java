@@ -52,19 +52,19 @@ public class InterfaceCriarNovoHorario {
 	Button btnAdicionarUC = new Button("Adicionar UC");
 
 	btnAdicionarUC.setOnAction(event -> {
-        	    List<String> aulasEscolhidas = new ArrayList<>();
-        
-        	    for (String item : selectedItems) {
-        		aulasEscolhidas.add(item);
-        	    }
-        
-        	    // Chamar o teu método aqui
-        	    Horario horario = CriarNovoHorario.criarHorario(horarios, aulasEscolhidas);
-        	    aulasEscolhidas = null;
-        
-        	    Calendario.getCalendar().clear();
-        	    stage.close();
-        	    Calendario.addHorarioAoCalendario(horario);
+	    List<String> aulasEscolhidas = new ArrayList<>();
+
+	    for (String item : selectedItems) {
+		aulasEscolhidas.add(item);
+	    }
+
+	    // Chamar o teu método aqui
+	    Horario horario = CriarNovoHorario.criarHorario(horarios, aulasEscolhidas);
+	    aulasEscolhidas = null;
+
+	    Calendario.getCalendar().clear();
+	    stage.close();
+	    Calendario.addHorarioAoCalendario(horario);
 	});
 
 	// Cria uma VBox e adiciona o ListView e o botão a ela
