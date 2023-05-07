@@ -35,8 +35,6 @@ public class ToICalendarTest {
 	    assertTrue(eventOptional.isPresent());
 	    VEvent event = eventOptional.get();
 	    assertNotNull(event);
-	    // print dstamp
-	    System.out.println(event.getEndDate().get().getDate().getClass());
 	    assertEquals("Example Event", event.getProperty("SUMMARY").get().getValue());
 	    assertEquals("Example Location", event.getProperty("LOCATION").get().getValue());
 
